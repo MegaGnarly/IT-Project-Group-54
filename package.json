@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/MegaGnarly/IT-Project-Group-54#readme",
   "dependencies": {
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "handlebars": "^4.7.7"
   }
 }
