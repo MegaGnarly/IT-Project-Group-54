@@ -9,6 +9,10 @@ var path = require('path');
 var fish = require('../model/fish');
 
 var multer = require('multer');
+
+app.get('/', (req, res) => {
+    res.render('homepage.hbs')
+})
       
 //store the fish in local disk first---------------------------------
 var storage = multer.diskStorage({

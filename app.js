@@ -11,9 +11,9 @@ app.engine('hbs', exphbs.engine({
 
 app.set('view engine', 'hbs')
 
-app.get('/', (req, res) => {
-    res.render('homepage.hbs')
-})
+const appRouter = require('./routes/appRouter')   
+
+app.use('/', appRouter)
 
 app.listen(process.env.PORT || PORT, () => {
     console.log('\n\nAppname is running!')
