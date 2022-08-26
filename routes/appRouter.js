@@ -13,6 +13,10 @@ var multer = require('multer');
 appRouter.get('/', (req, res) => {
     res.render('homepage.hbs')
 })
+
+appRouter.get('/user', (req, res) => {
+    res.render('user_homepage.hbs')
+})
       
 //store the fish in local disk first---------------------------------
 var storage = multer.diskStorage({
