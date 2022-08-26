@@ -21,6 +21,7 @@ var storage = multer.diskStorage({
 });
 
 //upload the fish to db----------------------------------------------
+/*
 var upload = multer({ storage: storage });
 
 appRouter.get('/',appController.viewFish)
@@ -45,5 +46,6 @@ appRouter.post('/', upload.single('image'), (req, res, next) => {
         }
     });
 });
+*/
 
 module.exports = appRouter
