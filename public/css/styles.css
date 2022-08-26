@@ -1,0 +1,230 @@
+footer {
+    background-color: #72A6E8;
+    font-weight: bold;
+    color: white;
+    margin-top: auto;
+    /* Force footer to stick to bottom of page */
+}
+
+.flexbox-footer-container {
+    display: flex;
+    flex: 1;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: left;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    
+}
+
+.flexbox-footer-row {
+    flex-wrap: wrap;
+    /* When viewport gets smaller each item will wrap onto a new line */
+    list-style: none;
+    flex-direction: column;
+    margin-bottom: 32px;
+}
+
+.flexbox-footer-row a {
+    margin-bottom: 1px;
+    font-weight: bold;
+    color: white;
+}
+
+.flexbox-footer-logo {
+    cursor: pointer;
+    float: right;
+    /* Important! 'Float' allows the logo to be in the same line as the text. */
+    display: block;
+    /* Right align the logo */
+    margin-left: auto;
+    /* Right align the logo */
+    margin-top: 5px;
+    transition: all 0.8s ease 0s;
+}
+
+.flexbox-footer-logo:hover {
+    transform: scale(1.05);
+}
+
+.flexbox-footer-row-horizontal {
+    list-style: none;
+    text-align: center;
+}
+
+.flexbox-footer-row-horizontal li {
+    display: inline-block;
+    /* Inline block makes it so that list elements appear horizontally */
+    padding-right: 8px;
+    color: white;
+}
+
+.flexbox-footer-row-horizontal a {
+    color: white;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.flexbox-main-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: left;
+    flex-direction: column;
+    padding: 10px 15%;
+    /* First value: padding top and bottom. Second value: padding on sides. */
+    margin-right: auto;
+}
+
+.flexbox-main-content-lists {
+    list-style-type: none;
+}
+
+.flexbox-main-content-lists li a {
+    color: dodgerblue;
+}
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 12px 2%;
+    /* Padding padding on top and bottom, padding on sides. */
+    background-color: #F7F7F7;
+}
+
+/* Header logo - add animation when hovering on logo */
+.flexbox-navbar-logo {
+    cursor: pointer;
+    margin-right: auto;
+    margin-top: 5px;
+    transition: all 0.5s ease 0s;
+}
+
+.flexbox-navbar-logo:hover {
+    transform: scale(1.1);
+}
+
+/* Header navbar button properties */
+.flexbox-navbar-button {
+    margin-left: 20px;
+    padding: 12px 32px;
+    background-color: #7D92DB;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.5s ease 0s;
+}
+
+/*  Header navbar button - animation upon hover */
+.flexbox-navbar-button:hover {
+    background-color: #72A6E8;
+    transform: scale(1.1);
+    /*font-size: 22px;*/
+}
+
+/* Header Hamburger - icon and animation upon hover */
+.flexbox-navbar-hamburger {
+    cursor: pointer;
+    display: none;
+    /* Hide the hamburger menu on big screens */
+    transition: all 0.5s ease 0s;
+
+}
+
+.flexbox-navbar-hamburger:hover {
+    transform: scale(1.1);
+}
+
+/*  Header Hamburger Bar - properties of the three lines that make up the burger */
+.bar {
+    width: 35px;
+    height: 5px;
+    background-color: #B5D2F6;
+    margin: 6px 15px;
+}
+
+/*  Header navbar links */
+.flexbox-navbar-text {
+    list-style: none;
+    /* Removes bullet points that appear before list elements on the navbar */
+}
+
+.flexbox-navbar-text li {
+    display: inline-block;
+    /* Inline block makes it so that list elements appear horizontally */
+    padding: 0px 20px;
+}
+
+.nav-logout-icon {
+    height: 50px;
+    width: 50px;
+}
+
+.nav-msg-icon {
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.nav-profile-icon {
+    height: 60px;
+    width: 60px;
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.flexbox-navbar-profile {
+    /* The profile section on the top right */
+    list-style: none;
+}
+
+.nav-username {
+    color: #343434;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.nav-userstatus {
+    color: #7D92DB;
+    font-size: 14px;
+}
+
+/* Header navbar links - animation upon hover*/
+.flexbox-navbar-text li a {
+    transition: all 0.8s ease 0s;
+}
+
+.flexbox-navbar-text li a:hover {
+    color: #72A6E8;
+    font-size: 16.5px;
+}
+
+.flexbox-navbar-hamburger {
+    display: block;
+}
+
+/* Hide navbar text */
+.flexbox-navbar-text {
+    display: none;
+}
+
+/* Hide username, user status and message icon */
+.flexbox-navbar-profile {
+    display: none;
+}
+
+.nav-msg-icon {
+    display: none;
+}
+
+.nav-profile-verticle-bar {
+    display: none;
+}
+
