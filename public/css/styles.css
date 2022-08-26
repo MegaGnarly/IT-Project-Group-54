@@ -1,3 +1,4 @@
+/*==================================HEADER and FOOTER==========================================*/
 footer {
     background-color: #72A6E8;
     font-weight: bold;
@@ -226,5 +227,24 @@ header {
 
 .nav-profile-verticle-bar {
     display: none;
+}
+
+/*==========================================================================*/
+
+/* Colours */
+.blue1 {
+    color: #68BBE3;
+}
+
+.blue2 {
+    color: #0E86D4;
+}
+
+.blue3 {
+    color: #055C9D;
+}
+
+.blue4 {
+    color: #003060;
 }
 
