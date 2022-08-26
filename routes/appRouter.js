@@ -10,7 +10,7 @@ var fish = require('../model/fish');
 
 var multer = require('multer');
 
-app.get('/', (req, res) => {
+appRouter.get('/', (req, res) => {
     res.render('homepage.hbs')
 })
       

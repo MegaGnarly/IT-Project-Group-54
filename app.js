@@ -11,6 +11,12 @@ app.engine('hbs', exphbs.engine({
 
 app.set('view engine', 'hbs')
 
+// Define where static assets live
+app.use(express.static('public'))
+
+// Used to expose body section for POST method
+app.use(bodyParser.urlencoded({ extended: false }));
+
 const appRouter = require('./routes/appRouter')   
 
 app.use('/', appRouter)
