@@ -1,8 +1,9 @@
 const PORT = 8080;
 const express = require('express')
 const bodyParser = require('body-parser')
-const app = express();
 const exphbs = require('express-handlebars');
+
+const app = express();
 
 app.engine('hbs', exphbs.engine({
     defaultlayout: 'main',

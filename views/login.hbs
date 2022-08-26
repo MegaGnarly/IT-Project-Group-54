@@ -1,0 +1,32 @@
+<main style="display: grid; justify-items: center">
+
+    <h1> User Login</h1>
+
+    <!-- Login Form -->
+    
+    <form action="login" method="POST" style="width: 20%">
+        <div class="general-form">
+            <div class="form-columns" style="row-gap: 15%">
+                <label for="username"><b>Username:</b></label>
+                <label for="password"><b>Password:</b></label>
+                <br/>
+            </div>
+
+            <div class="form-columns">
+                <input type="username" id="username" name="username" required/>
+                <input type="password" id="password" name="password" required/>
+            </div>
+        </div>
+        </br>
+        
+    </form>
+    <input type="submit" style= "cursor:pointer" value="Login" />
+
+    <p>Not a user? Sign up today!</p>
+
+    <!-- Link to register new user -->
+    <div>
+        <a href="/sign_up"><button style= "cursor:pointer">Register new user</button></a>
+    </div>
+
+</main>

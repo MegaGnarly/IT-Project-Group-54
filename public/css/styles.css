@@ -231,6 +231,20 @@ header {
 
 /*==========================================================================*/
 
+/* Register forms */
+.general-form {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+}
+
+.form-columns {
+    display: grid;
+    grid-template-columns: repeat(1, auto);
+    row-gap: 10%;
+}
+
+/*==========================================================================*/
+
 /* Colours */
 .blue1 {
     color: #68BBE3;

@@ -17,7 +17,17 @@ appRouter.get('/', (req, res) => {
 appRouter.get('/user', (req, res) => {
     res.render('user_homepage.hbs')
 })
-      
+
+appRouter.get('/login_page', (req, res) => { 
+    res.render('login.hbs') 
+});
+
+// appRouter.post('/login')
+
+appRouter.get('/sign_up', (req, res) => { 
+    res.render('sign_up.hbs') 
+});
+
 //store the fish in local disk first---------------------------------
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
