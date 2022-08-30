@@ -33,18 +33,18 @@
   
     <h1>Uploaded Images</h1>
     <div>
-        <% items.forEach(function(image) { %>
+        {{#each images}}
         <div>
             <div>
-                <img src="data:image/<%=image.img.contentType%>;base64, <%=image.img.data.toString('base64')%>">
+                <img src="data:image/png;base64,{{this.img.data}}">
                 <div>
-                    <h5>Angler: <%= image.angler %></h5>
-                    <p>Species: <%= image.species %></p>
-                    <p>Size: <%= image.size %> meters</p>
-                    <p>Weight: <%= image.weight %> kg</p>
+                    <h5>Angler: {{this.angler}}</h5>
+                    <p>Species: {{this.species}}</p>
+                    <p>Size: {{this.size}}</p>
+                    <p>Weight: {{this.weight}}</p>
                 </div>
             </div>
         </div>
-        <% }) %>
+        {{/each}}
     </div>
 </body>

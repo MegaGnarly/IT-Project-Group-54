@@ -3,8 +3,13 @@ var fish = require('../model/fish');
 
 //render the view fish page----------------------------
 const viewFish = async (req,res) => {
-   const fishes = await fish.find().lean()
-   return res.render('viewFishes', {items:fishes})
+    fish.find((err, images) => {
+        images = images.map((image) => {
+            image.img.data = image.img.data.toString('base64');
+            return image.toObject();
+        });
+        res.render('viewFish.hbs', {images: images});
+    });
 }
 
 //exports----------------------------------------------

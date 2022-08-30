@@ -28,42 +28,32 @@ appRouter.get('/sign_up', (req, res) => {
     res.render('sign_up.hbs') 
 });
 
-//store the fish in local disk first---------------------------------
-var storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'router/uploads')
-    },
-    filename: (req, file, cb) => {
-        cb(null, file.fieldname + '-' + Date.now())
-    }
-});
-
 //upload the fish to db----------------------------------------------
-/*
-var upload = multer({ storage: storage });
 
-appRouter.get('/',appController.viewFish)
-appRouter.post('/', upload.single('image'), (req, res, next) => {
-      
-    var obj = {
+appRouter.get('/viewFish',appController.viewFish)
+
+const upload = multer({dest: './uploads'});
+
+appRouter.post('/', upload.single('image'), (req, res) => {
+
+    var uploadedImage = new fish({
         angler: req.body.angler,
         species: req.body.name,
         size: req.body.size,
         weight: req.body.weight,
         img: {
-            data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
-            contentType: 'image/png'
-        }
-    }
-    fish.create(obj, (err, item) => {
-        if (err) {
-            console.log(err);
-        }
-        else {
-            res.redirect('/');
+            data: fs.readFileSync('./uploads/' + req.file.filename),
+            imgType: req.file.mimetype
         }
     });
+  
+    uploadedImage.save(err => {
+        if(err) { console.log(err); return; }
+        console.log('image saved');
+        fs.unlinkSync('./uploads/' + req.file.filename);
+        res.redirect('/viewFish');
+    });
 });
-*/
+//-----------------------------------------------------------------
 
 module.exports = appRouter
