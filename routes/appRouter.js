@@ -30,6 +30,9 @@ appRouter.get('/sign_up', (req, res) => {
 
 //upload the fish to db----------------------------------------------
 
+appRouter.get('/upload_fish', (req, res) => { 
+    res.render('upload_fish.hbs') 
+});
 appRouter.get('/viewFish',appController.viewFish)
 
 const upload = multer({dest: './uploads'});
