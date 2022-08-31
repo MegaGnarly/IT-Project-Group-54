@@ -1,5 +1,7 @@
 <main style="display: grid; justify-items: center">
-
+    {{#each flash}}
+    <p class="alert">{{this}}</p>
+    {{/each}}
     <h1> User Login</h1>
 
     <!-- Login Form -->
@@ -18,9 +20,23 @@
             </div>
         </div>
         </br>
-        
+
+        <div>
+            <input type="checkbox" onclick="myPassword()">Show Password
+        </div>
+        <script>
+            function myPassword() {
+                var x = document.getElementById("password");
+                if (x.type === "password") {
+                    x.type = "text";
+                } else {
+                    x.type = "password";
+                }
+            }
+        </script>
+
+        <input type="submit" style= "cursor:pointer; width:100%" value="Login" />
     </form>
-    <input type="submit" style= "cursor:pointer" value="Login" />
 
     <p>Not a user? Sign up today!</p>
 
