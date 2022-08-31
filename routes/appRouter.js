@@ -22,11 +22,13 @@ appRouter.get('/login_page', (req, res) => {
     res.render('login.hbs') 
 });
 
-// appRouter.post('/login')
+// appRouter.post('/login', appController.userLogin);
 
 appRouter.get('/sign_up', (req, res) => { 
     res.render('sign_up.hbs') 
 });
+
+appRouter.post('/sign_up', appController.registerUser);
 
 //upload the fish to db----------------------------------------------
 
