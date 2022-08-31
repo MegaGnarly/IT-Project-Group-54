@@ -42,9 +42,6 @@ authRouter.post('/login',
          failureRedirect: '/login_page', failureFlash: true
     }),
     function(req, res){
-        const role = appController.getPatientRole(req, res) 
-        console.log(role)
-        sessionStorage.setItem('role', role)
         sessionStorage.setItem('username', req.user.username)
         res.redirect('/user_homepage')
 
