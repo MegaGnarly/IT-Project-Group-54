@@ -1,6 +1,7 @@
 //requirements-------------------------------------------------------
 const express = require('express')
 const appRouter = express.Router()
+const sessionStorage = require('sessionstorage')
 const appController = require('../controllers/appController')
 require('../models/dbIndex')
 
@@ -11,11 +12,11 @@ var fish = require('../models/fish');
 var multer = require('multer');
 
 appRouter.get('/', (req, res) => {
-    res.render('homepage.hbs')
+    res.render('homepage.hbs', {username: sessionStorage.getItem('username')})
 })
 
 appRouter.get('/user', (req, res) => {
-    res.render('user_homepage.hbs')
+    res.render('user_homepage.hbs', {username: sessionStorage.getItem('username')})
 })
 
 appRouter.get('/sign_up', (req, res) => { 

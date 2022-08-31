@@ -25,7 +25,7 @@ authRouter.get('/user_homepage', isAuthenticated, (req, res) => {
     console.log(req.user.username)
     sessionStorage.setItem('username', req.user.username)
     sessionStorage.setItem('role', req.user.role)
-    res.render('/user_homepage.hbs', {username: sessionStorage.getItem('username')})
+    res.render('/user', {username: sessionStorage.getItem('username')})
 
     // res.render('patient_dashboard', { user: req.user.toJSON() })
 })
@@ -41,8 +41,9 @@ authRouter.post('/login',
         failureRedirect: './', failureFlash: true
     }),
     function(req, res){
+        console.log("HIIIIIIIII")
         sessionStorage.setItem('username', req.user.username)
-        return res.redirect('/user_homepage.hbs')
+        return res.redirect('/user')
 
     }
     // (req, res) => {
