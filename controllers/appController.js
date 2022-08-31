@@ -1,5 +1,5 @@
 //requires fish model----------------------------------
-var fish = require('../model/fish');
+var fish = require('../models/fish');
 
 //render the view fish page----------------------------
 const viewFish = async (req,res) => {
