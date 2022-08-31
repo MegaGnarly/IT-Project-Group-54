@@ -1,6 +1,6 @@
 //requires fish and user model----------------------------------
-var fish = require('../model/fish');
-var User = require('../model/user');
+var fish = require('../models/fish');
+var User = require('../models/user');
 
 //render the view fish page----------------------------
 const viewFish = async (req,res) => {

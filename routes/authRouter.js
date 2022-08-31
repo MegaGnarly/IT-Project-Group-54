@@ -34,15 +34,9 @@ authRouter.get('/user_homepage', isAuthenticated, (req, res) => {
 
 // Login page (with failure message displayed upon login failure)
 authRouter.get('/login', (req, res) => {
-    res.render('login', { flash: req.flash('error'), title: 'Login', layout: 'main2' })
+    res.render('login.hbs', { flash: req.flash('error'), title: 'Login', layout: 'main2' })
 })
 
-// Handle login
-// authRouter.post('/login',
-//     passport.authenticate('local', {
-//         successRedirect: '/patient_dash', failureRedirect: '/login', failureFlash: true
-//     })
-// )
 authRouter.post('/login',
     passport.authenticate('local', {
          failureRedirect: '/login_page', failureFlash: true
