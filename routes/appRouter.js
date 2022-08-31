@@ -2,11 +2,11 @@
 const express = require('express')
 const appRouter = express.Router()
 const appController = require('../controllers/appController')
-require('../model/dbIndex')
+require('../models/dbIndex')
 
 var fs = require('fs');
 var path = require('path');
-var fish = require('../model/fish');
+var fish = require('../models/fish');
 
 var multer = require('multer');
 
@@ -32,6 +32,9 @@ appRouter.post('/sign_up', appController.registerUser);
 
 //upload the fish to db----------------------------------------------
 
+appRouter.get('/upload_fish', (req, res) => { 
+    res.render('upload_fish.hbs') 
+});
 appRouter.get('/viewFish',appController.viewFish)
 
 const upload = multer({dest: './uploads'});
