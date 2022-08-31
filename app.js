@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const exphbs = require('express-handlebars');
 const sessionStorage = require('sessionstorage')
 const session = require('express-session')
+const flash = require('express-flash')
 const passport = require('./passport.js')
 const bcrypt = require('bcryptjs')
 
@@ -18,6 +19,9 @@ app.engine('hbs', exphbs.engine({
 }))
 
 app.set('view engine', 'hbs')
+
+// Flash messages for failed logins, and (possibly) other success/error messages
+app.use(flash())
 
 app.use(
     session({
@@ -36,6 +40,7 @@ app.use(
 )
 
 app.use(passport.authenticate('session'))
+
 
 // Load authentication router
 const authRouter = require('./routes/authRouter');
