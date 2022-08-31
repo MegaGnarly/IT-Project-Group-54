@@ -64,7 +64,7 @@ const upload = multer({dest: './uploads'});
 authRouter.post('/', upload.single('image'), (req, res) => {
 
     var uploadedImage = new fish({
-        angler: req.body.angler,
+        angler: sessionStorage.getItem('username'),
         species: req.body.name,
         size: req.body.size,
         weight: req.body.weight,

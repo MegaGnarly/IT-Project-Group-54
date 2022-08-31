@@ -1,18 +1,19 @@
 //requires fish and user model----------------------------------
+const sessionStorage = require('sessionstorage')
 var fish = require('../models/fish');
 var User = require('../models/user');
 
-//render the view fish page----------------------------
+//render the view fish page--------------------------------------------------------------------------------
 const viewFish = async (req,res) => {
-    fish.find((err, images) => {
+    fish.find({angler: sessionStorage.getItem('username')}, (err, images) => {
         images = images.map((image) => {
             image.img.data = image.img.data.toString('base64');
             return image.toObject();
         });
+        console.log(sessionStorage.getItem('username'))
         res.render('viewFish.hbs', {images: images});
     });
 }
-
 
 // register user --------------------------------------
 
