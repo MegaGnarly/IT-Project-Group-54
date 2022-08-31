@@ -18,10 +18,6 @@ appRouter.get('/user', (req, res) => {
     res.render('user_homepage.hbs')
 })
 
-appRouter.get('/login_page', (req, res) => { 
-    res.render('login.hbs') 
-});
-
 appRouter.get('/sign_up', (req, res) => { 
     res.render('sign_up.hbs') 
 });

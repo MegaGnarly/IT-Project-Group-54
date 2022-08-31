@@ -25,8 +25,7 @@ authRouter.get('/user_homepage', isAuthenticated, (req, res) => {
     console.log(req.user.username)
     sessionStorage.setItem('username', req.user.username)
     sessionStorage.setItem('role', req.user.role)
-    res.redirect('/user_homepage')
-    //appController.getPatientDashboard(req, res)
+    res.render('/user_homepage.hbs', {username: sessionStorage.getItem('username')})
 
     // res.render('patient_dashboard', { user: req.user.toJSON() })
 })
@@ -39,11 +38,11 @@ authRouter.get('/login', (req, res) => {
 
 authRouter.post('/login',
     passport.authenticate('local', {
-         failureRedirect: '/login_page', failureFlash: true
+        failureRedirect: './', failureFlash: true
     }),
     function(req, res){
         sessionStorage.setItem('username', req.user.username)
-        res.redirect('/user_homepage')
+        return res.redirect('/user_homepage.hbs')
 
     }
     // (req, res) => {
