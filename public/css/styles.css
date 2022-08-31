@@ -1,6 +1,5 @@
 /*==================================HEADER and FOOTER==========================================*/
 footer {
-    background-color: #72A6E8;
     font-weight: bold;
     color: white;
     margin-top: auto;
@@ -114,7 +113,6 @@ header {
 .flexbox-navbar-button {
     margin-left: 20px;
     padding: 12px 32px;
-    background-color: #7D92DB;
     color: white;
     font-size: 20px;
     font-weight: bold;
@@ -126,31 +124,11 @@ header {
 
 /*  Header navbar button - animation upon hover */
 .flexbox-navbar-button:hover {
-    background-color: #72A6E8;
+    background-color: #0E86D4;
     transform: scale(1.1);
     /*font-size: 22px;*/
 }
 
-/* Header Hamburger - icon and animation upon hover */
-.flexbox-navbar-hamburger {
-    cursor: pointer;
-    display: none;
-    /* Hide the hamburger menu on big screens */
-    transition: all 0.5s ease 0s;
-
-}
-
-.flexbox-navbar-hamburger:hover {
-    transform: scale(1.1);
-}
-
-/*  Header Hamburger Bar - properties of the three lines that make up the burger */
-.bar {
-    width: 35px;
-    height: 5px;
-    background-color: #B5D2F6;
-    margin: 6px 15px;
-}
 
 /*  Header navbar links */
 .flexbox-navbar-text {
@@ -203,12 +181,8 @@ header {
 }
 
 .flexbox-navbar-text li a:hover {
-    color: #72A6E8;
+    color: #0E86D4;
     font-size: 16.5px;
-}
-
-.flexbox-navbar-hamburger {
-    display: block;
 }
 
 /* Hide navbar text */
@@ -255,7 +229,7 @@ header {
 }
 
 .blue3 {
-    color: #055C9D;
+    background-color: #055C9D;
 }
 
 .blue4 {
