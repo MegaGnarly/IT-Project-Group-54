@@ -1,0 +1,20 @@
+<body>
+    <h1>Catch Deatils</h1>
+    <div>
+        {{#each images}}
+        <div>
+            <div>
+                <img src="data:image/png;base64,{{this.img.data}}">
+                <div>
+                    <h5>Angler: {{this.angler}}</h5>
+                    <p>Upload Time: {{this.time}}</p>
+                    <p>Species: {{this.species}}</p>
+                    <p>Size: {{this.size}}</p>
+                    <p>Weight: {{this.weight}}</p>
+                    <a href = "/delete/{{this._id}}"><button class = nav type="button">Delete</button>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</body>

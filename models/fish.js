@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 //I added a angler attribute cuz I think we might need to sort with respect to anglers too
 var fishSchema = new mongoose.Schema({
     angler: String,
+    time: Date,
     species: {type: String, required:true},
     size: Number,
     weight: Number,

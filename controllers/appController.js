@@ -15,6 +15,33 @@ const viewFish = async (req,res) => {
     });
 }
 
+// render the details of one fish-------------------------------------------
+const fishDetails = async (req,res) => {
+    fish.find({_id: req.params._id}, (err, images) => {
+        console.log(req.params._id);
+        images = images.map((image) => {
+            image.img.data = image.img.data.toString('base64');
+            console.log(image.angler);
+            return image.toObject();
+        });
+        res.render('fishDetails.hbs', {images: images});
+    });
+}
+
+// delete an unwanted record----------------------------------------------------
+const deleteFish = async (req,res) => {
+    var info = {_id: req.params._id};
+    fish.remove(info, function(err, obj) {if (err) throw err;});
+    fish.find({angler: sessionStorage.getItem('username')}, (err, images) => {
+        images = images.map((image) => {
+            image.img.data = image.img.data.toString('base64');
+            return image.toObject();
+        });
+        console.log(images._id)
+        res.render('viewFish.hbs', {images: images});
+    });
+}
+
 // register user --------------------------------------
 
 const registerUser = async (req, res) => {
@@ -40,5 +67,7 @@ const registerUser = async (req, res) => {
 //exports----------------------------------------------
 module.exports = {
     viewFish,
-    registerUser
+    registerUser,
+    fishDetails,
+    deleteFish
 }

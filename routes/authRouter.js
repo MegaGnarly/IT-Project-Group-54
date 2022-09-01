@@ -47,7 +47,6 @@ authRouter.post('/login',
 
 //upload the fish to db----------------------------------------------
 
-
 var fs = require('fs');
 var path = require('path');
 var fish = require('../models/fish');
@@ -65,6 +64,7 @@ authRouter.post('/', upload.single('image'), (req, res) => {
 
     var uploadedImage = new fish({
         angler: sessionStorage.getItem('username'),
+        time: Date.now(),
         species: req.body.name,
         size: req.body.size,
         weight: req.body.weight,
@@ -81,6 +81,11 @@ authRouter.post('/', upload.single('image'), (req, res) => {
         res.redirect('/viewFish');
     });
 });
+
+// fish detail page related-------------------------------------------------
+authRouter.get('/fishDetails/:_id',appController.fishDetails)
+authRouter.get('/delete/:_id',appController.deleteFish)
+
 //-----------------------------------------------------------------
 
 
