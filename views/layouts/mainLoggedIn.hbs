@@ -14,7 +14,7 @@
     <!-- Website header which contains navbar elements (hamburger icon, logo, links and log in) -->
     <header>
 
-        <a href="/" class="flexbox-navbar-logo"><img src="assets/logo_navbar.png" width="175px"
+        <a href="/user" class="flexbox-navbar-logo"><img src="assets/logo_navbar.png" width="175px"
                 height="85px" alt="fish@Home Logo"></a>
         <nav>
            <ul class="flexbox-navbar-profile">
@@ -24,7 +24,9 @@
             </ul>
         </nav>
         {{!-- <p>Logged in as {{user.username}}. User secret is {{user.secret}}.</p> --}}
-
+        <form method="POST" action="/logout">
+            <button class="flexbox-navbar-button blue3" style="cursor: pointer;">Logout</button>
+        </form>
     </header>
 
 
