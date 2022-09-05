@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+/* Override CSS defaults custom values */
+* {
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
 /*==================================HEADER and FOOTER==========================================*/
 footer {
     font-weight: bold;
@@ -219,13 +226,59 @@ header {
 
 /*==========================================================================*/
 
+/*user homepage*/
+.user_homepage_flexbox{
+    height: 600px;
+    width: 50%;
+    display: flexbox;
+    margin: auto;
+}
+
+.viewfish_button{
+    width: 100%;
+    border-radius: 20px;
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    filter: drop-shadow(4px 4px 3px #D4D4D4);
+    margin-top: 8%;
+    margin-bottom: 8%;
+    transition: all 0.5s ease 0s;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.uploadfish_button{
+    width: 100%;
+    border-radius: 20px;
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    filter: drop-shadow(4px 4px 3px #D4D4D4);
+    transition: all 0.5s ease 0s;
+    font-size: larger;
+    font-weight: bold;
+}
+
+button:hover{
+    background-color: #0074b7;
+    transform: scale(1.05);
+    
+}
+
+/*==========================================================================*/
+
 /* Colours */
 .blue1 {
-    color: #BFD7ED;
+    background-color: #BFD7ED;
 }
 
 .blue2 {
-    color: #60A3D9;
+    background-color: #60A3D9;
 }
 
 .blue3 {
@@ -233,6 +286,6 @@ header {
 }
 
 .blue4 {
-    color: #003B73;
+    background-color: #003B73;
 }
 
