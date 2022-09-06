@@ -9,11 +9,30 @@
                     <h5>Angler: {{this.angler}}</h5>
                     <p>Upload Time: {{this.time}}</p>
                     <p>Species: {{this.species}}</p>
-                    <p>Size: {{this.size}}</p>
-                    <p>Weight: {{this.weight}}</p>
-                    <a href = "/delete/{{this._id}}"><button class = nav type="button">Delete</button>
+                    <p>Size: {{this.size}}cm</p>
+                    <p>Weight: {{this.weight}}kg</p>
+                    <a href = "/delete/{{this._id}}"><button class = nav type="button">Delete</button></a>
                 </div>
             </div>
+
+            <hr>
+
+            <form action="" method="POST">
+                <h5>Feel uncomfy with it? Update it!</h5>
+                <div>
+                    <label for="name">Species</label>
+                    <input type="text" id="name" placeholder="Name" value="" name="name" required>
+                </div>
+                <div>
+                    <label for="desc">Size (in cm): </label>
+                    <input type="number" id="size" placeholder="Size" value="0" name="size">
+                </div>
+                <div>
+                    <label for="info">Weight (in kg): </label>
+                    <input type="number" id="weight" placeholder="Weight" value="0" name="weight">
+                </div>
+                <button class = nav type="submit" onclick = alert("updating")>Update</button>
+            </form>
         </div>
         {{/each}}
     </div>

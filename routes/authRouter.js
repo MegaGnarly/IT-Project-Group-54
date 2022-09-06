@@ -85,6 +85,7 @@ authRouter.post('/', upload.single('image'), (req, res) => {
 // fish detail page related-------------------------------------------------
 authRouter.get('/fishDetails/:_id',appController.fishDetails)
 authRouter.get('/delete/:_id',appController.deleteFish)
+authRouter.post('/fishDetails/:_id',appController.updateFish)
 
 //-----------------------------------------------------------------
 

@@ -42,6 +42,27 @@ const deleteFish = async (req,res) => {
     });
 }
 
+// update details of one fish-------------------------------------------------
+const updateFish = async (req,res) => {
+
+    var info = {_id: req.params._id};
+
+    var newvalues = { $set: {species: req.body.name,
+        size: req.body.size,
+        weight: req.body.weight} };
+    
+    fish.updateOne(info, newvalues, function(err, obj) {if (err) throw err;});
+    
+    fish.find({angler: sessionStorage.getItem('username')}, (err, images) => {
+        images = images.map((image) => {
+            image.img.data = image.img.data.toString('base64');
+            return image.toObject();
+        });
+        console.log(images._id)
+        res.render('viewFish.hbs', {images: images});
+    });
+}
+
 // register user --------------------------------------
 
 const registerUser = async (req, res) => {
@@ -69,5 +90,6 @@ module.exports = {
     viewFish,
     registerUser,
     fishDetails,
-    deleteFish
+    deleteFish,
+    updateFish
 }
