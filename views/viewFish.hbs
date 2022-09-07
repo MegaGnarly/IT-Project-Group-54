@@ -1,6 +1,12 @@
 <body>
     <h1>Uploaded Fishes</h1>
     <div>
+        <p>Sort with: </p>
+        <a href = "/sortWithTime"><button class = nav type="button">Time</button></a>
+        <a href = "/sortWithSize"><button class = nav type="button">Size</button></a>
+        <a href = "/sortWithWeight"><button class = nav type="button">Weight</button></a>
+        <a href = "/reset"><button class = nav type="button">Reset</button></a>
+        <hr>
         {{#each images}}
         <div>
             <div>
