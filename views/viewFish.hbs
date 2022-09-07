@@ -1,32 +1,4 @@
 <body>
-    <h1>To Upload Fishes</h1>
-    <hr>
-    <div>
-        <form action="/" method="POST" enctype="multipart/form-data">
-            <div>
-                <label for="name">Species: </label>
-                <input type="text" id="name" placeholder="Name" value="" name="name" required>
-            </div>
-            <div>
-                <label for="desc">Size: </label>
-                <input type="number" id="size" placeholder="Size" value="0" name="size">
-            </div>
-            <div>
-                <label for="info">Weight: </label>
-                <input type="number" id="weight" placeholder="Weight" value="0" name="weight">
-            </div>
-            <div>
-                <label for="image">Upload Image</label>
-                <input type="file" id="image" name="image" value="" required>
-            </div>
-            <div>
-                <button type="submit">Submit</button>
-            </div>
-        </form>
-    </div>
-  
-    <hr>
-  
     <h1>Uploaded Fishes</h1>
     <div>
         {{#each images}}

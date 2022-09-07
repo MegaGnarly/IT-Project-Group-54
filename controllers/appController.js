@@ -11,7 +11,7 @@ const viewFish = async (req,res) => {
             return image.toObject();
         });
         console.log(sessionStorage.getItem('username'))
-        res.render('viewFish.hbs', {images: images});
+        res.render('viewFish.hbs', {layout: "mainLoggedIn.hbs", images: images});
     });
 }
 
