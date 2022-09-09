@@ -1,26 +1,28 @@
-<body>
-    <h1 class="upload_fish_title">Upload Fish</h1>
-    <div>
-        <form action="/" method="POST" enctype="multipart/form-data">
-            <div>
-                <label class="upload_fish_section" for="name">Species:</label>
-                <input class="upload_fish_input" type="text" id="name" placeholder="Name" value="" name="name" required>
-            </div>
-            <div>
-                <label class="upload_fish_section" for="desc">Size (in cm):</label>
-                <input class="upload_fish_input" type="number" id="size" placeholder="Size" value="0" name="size">
-            </div>
-            <div>
-                <label class="upload_fish_section" for="info">Weight (in kg):</label>
-                <input class="upload_fish_input" type="number" id="weight" placeholder="Weight" value="0" name="weight">
-            </div>
-            <div>
-                <label class="upload_fish_section" for="image">Upload Image:</label>
-                <input class="upload_fish_input" type="file" id="image" name="image" value="" required>
-            </div>
-            <div>
-                <button class="upload_fish_submit" type="submit">Submit</button>
-            </div>
-        </form>
+<body class="upload_fish">
+    <div class="upload_fish_form">
+        <h1 class="upload_fish_title">Upload Fish</h1>
+        <div>
+            <form action="/" method="POST" enctype="multipart/form-data">
+                <div>
+                    <label class="upload_fish_section" for="name">Species:</label>
+                    <input class="upload_fish_input" type="text" id="name" placeholder="Name" value="" name="name" required>
+                </div>
+                <div>
+                    <label class="upload_fish_section" for="desc">Size (in cm):</label>
+                    <input class="upload_fish_input" type="number" id="size" placeholder="Size" value="0" name="size">
+                </div>
+                <div>
+                    <label class="upload_fish_section" for="info">Weight (in kg):</label>
+                    <input class="upload_fish_input" type="number" id="weight" placeholder="Weight" value="0" name="weight">
+                </div>
+                <div>
+                    <label class="upload_fish_section" for="image">Upload Image:</label>
+                    <input class="upload_fish_input" type="file" id="image" name="image" value="" required>
+                </div>
+                <div>
+                    <button class="upload_fish_submit blue2" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
     </div>
 </body>
