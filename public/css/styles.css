@@ -271,6 +271,37 @@ button:hover{
     
 }
 
+/*==========================================================================*/
+
+.upload_fish_title{
+    text-align: center;
+}
+
+.upload_fish_section{
+    margin-left: 35%;
+    display: flex;
+    padding: 2%;
+}
+
+.upload_fish_input{
+    margin-left: 35%;
+    display: flex;
+    padding: 1%;
+    filter: drop-shadow(4px 4px 3px #D4D4D4);
+    width: 30%;
+    border-radius: 10px;
+    border-color: black;
+    border-width: 3px;
+}
+
+.upload_fish_submit{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
 a,
 button{
     text-decoration: none;
