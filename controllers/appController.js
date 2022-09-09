@@ -3,7 +3,27 @@ const sessionStorage = require('sessionstorage')
 var fish = require('../models/fish');
 var User = require('../models/user');
 
-//render the view fish page--------------------------------------------------------------------------------
+// sort fishes in view fish page------------------------------------------------
+var sort = null;
+const sortWithSize = async (req,res) => {
+    sort = {size: -1};
+    return res.redirect('/viewFish')
+}
+const sortWithTime = async (req,res) => {
+    sort = {time: -1};
+    return res.redirect('/viewFish')
+}
+const sortWithWeight = async (req,res) => {
+    sort = {weight: -1};
+    return res.redirect('/viewFish')
+}
+const resetSort = async (req,res) => {
+    sort = null;
+    return res.redirect('/viewFish')
+}
+
+// viewing fish page--------------------------------------------------------------
+
 const viewFish = async (req,res) => {
     fish.find({angler: sessionStorage.getItem('username')}, (err, images) => {
         images = images.map((image) => {
@@ -12,11 +32,13 @@ const viewFish = async (req,res) => {
         });
         console.log(sessionStorage.getItem('username'))
         res.render('viewFish.hbs', {layout: "mainLoggedIn.hbs", images: images});
-    });
+    }).sort(sort);
+    sort = null;
 }
 
 // render the details of one fish-------------------------------------------
 const fishDetails = async (req,res) => {
+    
     fish.find({_id: req.params._id}, (err, images) => {
         console.log(req.params._id);
         images = images.map((image) => {
@@ -24,8 +46,9 @@ const fishDetails = async (req,res) => {
             console.log(image.angler);
             return image.toObject();
         });
-        res.render('fishDetails.hbs', {images: images});
+        res.render('fishDetails.hbs', {layout: "mainLoggedIn.hbs",images: images});
     });
+
 }
 
 // delete an unwanted record----------------------------------------------------
@@ -91,5 +114,9 @@ module.exports = {
     registerUser,
     fishDetails,
     deleteFish,
-    updateFish
+    updateFish,
+    sortWithSize,
+    sortWithTime,
+    sortWithWeight,
+    resetSort
 }
