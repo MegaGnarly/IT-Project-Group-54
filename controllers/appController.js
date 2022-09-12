@@ -25,6 +25,9 @@ const resetSort = async (req,res) => {
 // viewing fish page--------------------------------------------------------------
 
 const viewFish = async (req,res) => {
+    if (!req.isAuthenticated()) {
+        return res.redirect('/login')
+    }
     fish.find({angler: sessionStorage.getItem('username')}, (err, images) => {
         images = images.map((image) => {
             image.img.data = image.img.data.toString('base64');

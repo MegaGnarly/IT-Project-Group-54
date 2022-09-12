@@ -1,22 +1,21 @@
 <body>
-    <h1>Uploaded Fishes</h1>
+    <h1 class="upload_fish_title">Uploaded Fish</h1>
     <div>
-        <p>Sort with: </p>
-        <a href = "/sortWithTime"><button class = nav type="button">Time</button></a>
-        <a href = "/sortWithSize"><button class = nav type="button">Size</button></a>
-        <a href = "/sortWithWeight"><button class = nav type="button">Weight</button></a>
-        <a href = "/reset"><button class = nav type="button">Reset</button></a>
-        <hr>
+        <div class="fish_sort_header">
+            <p class="sort_with">Sort with: </p>
+            <a class="sort_boxes" href = "/sortWithTime"><button class ="sort_button blue2" type="button">Time</button></a>
+            <a class="sort_boxes" href = "/sortWithSize"><button class ="sort_button blue2" type="button">Size</button></a>
+            <a class="sort_boxes" href = "/sortWithWeight"><button class ="sort_button blue2" type="button">Weight</button></a>
+            <a class="sort_boxes" href = "/reset"><button class ="sort_button blue2" type="button">Reset</button></a>
+        </div>
         {{#each images}}
-        <div>
-            <div>
-                <img src="data:image/png;base64,{{this.img.data}}">
-                <div>
-                    <p>Species: {{this.species}}</p>
-                    <p>Size: {{this.size}}cm</p>
-                    <p>Weight: {{this.weight}}g</p>
-                    <a href = "/fishDetails/{{this._id}}"><button class = nav type="button">Details</button></a>
-                </div>
+        <div class="fish-flexbox blue1">
+            <img class="fish_image" src="data:image/png;base64,{{this.img.data}}">
+            <div class="fish_details_flexbox">
+                <p class="fish_details blue2">Species: {{this.species}}</p>
+                <p class="fish_details blue2">Size: {{this.size}}cm</p>
+                <p class="fish_details blue2">Weight: {{this.weight}}kg</p>
+                <a href = "/fishDetails/{{this._id}}"><button class="details_button blue2" type="button">Details</button></a>
             </div>
         </div>
         {{/each}}

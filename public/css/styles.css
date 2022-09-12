@@ -273,6 +273,97 @@ button:hover{
 
 /*==========================================================================*/
 
+.fish_sort_header{
+    margin: auto;
+    display: flex;
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.sort_with{
+    color: #003B73;
+    font-size: larger;
+    font-weight: bold;
+    margin-right: 3%;
+}
+
+.sort_boxes{
+    margin-right: 5%;
+}
+
+.sort_button{
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    filter: drop-shadow(4px 4px 3px #D4D4D4);
+    transition: all 0.5s ease 0s;
+    font-size: larger;
+    font-weight: bold;
+    text-decoration: none;
+    padding-inline: 20%;
+}
+
+.fish-flexbox{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    padding: 5%;
+    margin: 5%;
+    border-radius: 20px;
+    filter: drop-shadow(4px 4px 3px #D4D4D4);
+    border: rgb(151, 151, 151);
+    border-width: 3px;
+    border-style: solid;
+}
+
+.fish_image{
+    display: flex;
+    max-width: 30%;
+    max-height: 10%;
+}
+
+.fish_details_flexbox{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 30%;
+    height: 90%;
+}
+
+.fish_details{
+    display: flex;
+    border-radius: 10px;
+    width: 100%;
+    margin: 5%;
+    padding: 3%;
+    font-weight: bold;
+    border: rgb(151, 151, 151);
+    border-width: 3px;
+    border-style: solid;
+}
+
+.details_button{
+    width: 100%;
+    margin: 5%;
+    border-radius: 20px;
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    filter: drop-shadow(4px 4px 3px #D4D4D4);
+    transition: all 0.5s ease 0s;
+    font-size: larger;
+    font-weight: bold;
+    text-decoration: none;
+
+}
+
+/*==========================================================================*/
+
 .upload_fish{
     background-image: url("/assets/fish_background.jpg");
     background-size: 100% 100%;
