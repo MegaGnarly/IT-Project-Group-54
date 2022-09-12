@@ -100,6 +100,7 @@ authRouter.get('/reset',appController.resetSort)
 // Handle logout
 authRouter.post('/logout', (req, res) => {
     console.log("Running Logout")
+    sessionStorage.clear()
     req.logout(function(err) {
         if (err) { 
             return next(err); 

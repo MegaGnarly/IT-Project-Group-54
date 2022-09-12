@@ -44,12 +44,17 @@ const fishDetails = async (req,res) => {
     
     fish.find({_id: req.params._id}, (err, images) => {
         console.log(req.params._id);
+        author = false;
         images = images.map((image) => {
             image.img.data = image.img.data.toString('base64');
             console.log(image.angler);
+            if (image.angler==sessionStorage.getItem("username")){
+                author = true;
+            }
             return image.toObject();
         });
-        res.render('fishDetails.hbs', {layout: "mainLoggedIn.hbs",images: images});
+        
+        res.render('fishDetails.hbs', {layout: "mainLoggedIn.hbs",images: images, author});
     });
 
 }

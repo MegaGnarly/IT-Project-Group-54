@@ -1,9 +1,9 @@
 <body>
-    <h1>Catch Details</h1>
+    <h1 class="upload_fish_title">Catch Details</h1>
     <div>
         {{#each images}}
-        <div>
-            <div>
+        
+            <div class="fish-flexbox blue1">
                 <img src="data:image/png;base64,{{this.img.data}}">
                 <div>
                     <h5>Angler: {{this.angler}}</h5>
@@ -11,12 +11,11 @@
                     <p>Species: {{this.species}}</p>
                     <p>Size: {{this.size}}cm</p>
                     <p>Weight: {{this.weight}}g</p>
-                    <a href = "/delete/{{this._id}}"><button class = nav type="button">Delete</button></a>
                 </div>
             </div>
-
+        {{/each}}
             <hr>
-
+            {{#if author}}
             <form action="" method="POST">
                 <h5>Feel uncomfy with it? Update it!</h5>
                 <div>
@@ -33,7 +32,10 @@
                 </div>
                 <button class = nav type="submit" onclick = alert("updating")>Update</button>
             </form>
-        </div>
-        {{/each}}
+            <a href = "/delete/{{this._id}}"><button class = nav type="button">Delete</button></a>
+
+            {{/if}}
+        
+
     </div>
 </body>
