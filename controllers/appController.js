@@ -28,13 +28,14 @@ const viewFish = async (req,res) => {
     if (!req.isAuthenticated()) {
         return res.redirect('/login')
     }
+    user = true;
     fish.find({angler: sessionStorage.getItem('username')}, (err, images) => {
         images = images.map((image) => {
             image.img.data = image.img.data.toString('base64');
             return image.toObject();
         });
         console.log(sessionStorage.getItem('username'))
-        res.render('viewFish.hbs', {layout: "mainLoggedIn.hbs", images: images});
+        res.render('viewFish.hbs', {layout: "mainLoggedIn.hbs", images: images, user});
     }).sort(sort);
     sort = null;
 }
@@ -44,17 +45,17 @@ const fishDetails = async (req,res) => {
     
     fish.find({_id: req.params._id}, (err, images) => {
         console.log(req.params._id);
-        author = false;
+        user = false;
         images = images.map((image) => {
             image.img.data = image.img.data.toString('base64');
             console.log(image.angler);
             if (image.angler==sessionStorage.getItem("username")){
-                author = true;
+                user = true;
             }
             return image.toObject();
         });
         
-        res.render('fishDetails.hbs', {layout: "mainLoggedIn.hbs",images: images, author});
+        res.render('fishDetails.hbs', {layout: "mainLoggedIn.hbs",images: images, user});
     });
 
 }

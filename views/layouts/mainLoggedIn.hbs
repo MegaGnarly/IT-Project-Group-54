@@ -19,12 +19,12 @@
         <nav>
            <ul class="flexbox-navbar-profile">
                 <li class="nav-username">
-                    <p>{{username}}</p>
+                    <p>{{user}}</p>
                 </li>
             </ul>
         </nav>
         {{!-- <p>Logged in as {{user.username}}. User secret is {{user.secret}}.</p> --}}
-        {{#if username}}
+        {{#if user}}
         <form method="POST" action="/logout">
             <button class="flexbox-navbar-button blue3" style="cursor: pointer;">Logout</button>
         </form>

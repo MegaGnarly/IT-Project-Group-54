@@ -57,6 +57,10 @@ const appRouter = require('./routes/appRouter')
 
 app.use('/', appRouter)
 
+app.get('*', (req, res) => {
+    res.render('homepage.hbs')
+})
+
 app.listen(process.env.PORT || PORT, () => {
     console.log('\n\nAppname is running!')
 })

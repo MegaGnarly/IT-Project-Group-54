@@ -23,7 +23,7 @@ const isAuthenticated = (req, res, next) => {
 authRouter.get('/user', isAuthenticated, (req, res) => {
     console.log("Loaded user homepage (authRouter.js)")
     console.log(req.user.username)
-    res.render('user_homepage.hbs', {layout: 'mainLoggedIn', username: sessionStorage.getItem('username')})
+    res.render('user_homepage.hbs', {layout: 'mainLoggedIn', user: sessionStorage.getItem('username')})
 
     // res.render('patient_dashboard', { user: req.user.toJSON() })
 })
@@ -31,7 +31,12 @@ authRouter.get('/user', isAuthenticated, (req, res) => {
 
 // Login page (with failure message displayed upon login failure)
 authRouter.get('/login', (req, res) => {
-    res.render('login.hbs', { flash: req.flash('error'), title: 'Login', layout: 'main' })
+    if (isAuthenticated()){
+        res.redirect('/user')
+    }
+    else {
+        res.render('login.hbs', { flash: req.flash('error'), title: 'Login', layout: 'main' })
+    }
 })
 
 authRouter.post('/login',
@@ -54,7 +59,7 @@ var fish = require('../models/fish');
 var multer = require('multer');
 
 authRouter.get('/upload_fish', isAuthenticated, (req, res) => { 
-    res.render('upload_fish.hbs', {layout: 'mainLoggedIn', username: sessionStorage.getItem('username')}) 
+    res.render('upload_fish.hbs', {layout: 'mainLoggedIn', user: sessionStorage.getItem('username')}) 
 });
 authRouter.get('/viewFish',appController.viewFish)
 
