@@ -1,11 +1,10 @@
-<main style="display: grid; justify-items: center">
+<main style="display: grid; justify-items: center; margin-bottom:20px">
     {{#each flash}}
     <p class="alert">{{this}}</p>
     {{/each}}
     <h1> User Login</h1>
 
     <!-- Login Form -->
-    
     <form action="login" method="POST" style="width: 20%">
         <div class="general-form">
 
@@ -34,6 +33,7 @@
             <button type="submit" value="Login">Login</button>
         </div>
     </form>
+
     <p>Not a user? Sign up today!</p>
     
     <!-- Link to register new user -->
