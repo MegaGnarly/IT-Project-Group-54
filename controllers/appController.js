@@ -45,7 +45,7 @@ const fishDetails = async (req,res) => {
     
     fish.find({_id: req.params._id}, (err, images) => {
         console.log(req.params._id);
-        const user = false;
+        var user = false;
         images = images.map((image) => {
             image.img.data = image.img.data.toString('base64');
             console.log(image.angler);
@@ -63,15 +63,9 @@ const fishDetails = async (req,res) => {
 // delete an unwanted record----------------------------------------------------
 const deleteFish = async (req,res) => {
     var info = {_id: req.params._id};
-    fish.remove(info, function(err, obj) {if (err) throw err;});
-    fish.find({angler: sessionStorage.getItem('username')}, (err, images) => {
-        images = images.map((image) => {
-            image.img.data = image.img.data.toString('base64');
-            return image.toObject();
-        });
-        console.log(images._id)
-        res.render('viewFish.hbs', {images: images});
-    });
+    fish.deleteOne(info, function(err, obj) {if (err) throw err;});
+    return res.redirect("/viewFish")
+    
 }
 
 // update details of one fish-------------------------------------------------
