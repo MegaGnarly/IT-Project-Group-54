@@ -28,14 +28,14 @@ const viewFish = async (req,res) => {
     if (!req.isAuthenticated()) {
         return res.redirect('/login')
     }
-    user = true;
-    fish.find({angler: sessionStorage.getItem('username')}, (err, images) => {
-        images = images.map((image) => {
-            image.img.data = image.img.data.toString('base64');
-            return image.toObject();
+    var user = true;
+    fish.find({angler: sessionStorage.getItem('username')}, (err, fishes) => {
+        fishes = fishes.map((fish) => {
+            fish.img.data = fish.img.data.toString('base64');
+            return fish.toObject();
         });
         console.log(sessionStorage.getItem('username'))
-        res.render('viewFish.hbs', {layout: "mainLoggedIn.hbs", images: images, user});
+        res.render('viewFish.hbs', {layout: "mainLoggedIn.hbs", fishes: fishes, user});
     }).sort(sort);
     sort = null;
 }
@@ -43,19 +43,19 @@ const viewFish = async (req,res) => {
 // render the details of one fish-------------------------------------------
 const fishDetails = async (req,res) => {
     
-    fish.find({_id: req.params._id}, (err, images) => {
+    fish.find({_id: req.params._id}, (err, fishes) => {
         console.log(req.params._id);
         var user = false;
-        images = images.map((image) => {
-            image.img.data = image.img.data.toString('base64');
-            console.log(image.angler);
-            if (image.angler==sessionStorage.getItem("username")){
+        fishes = fishes.map((fish) => {
+            fish.img.data = fish.img.data.toString('base64');
+            console.log(fish.angler);
+            if (fish.angler==sessionStorage.getItem("username")){
                 user = true;
             }
-            return image.toObject();
+            return fish.toObject();
         });
         
-        res.render('fishDetails.hbs', {layout: "mainLoggedIn.hbs",images: images, user});
+        res.render('fishDetails.hbs', {layout: "mainLoggedIn.hbs",fishes: fishes, user});
     });
 
 }
@@ -79,14 +79,7 @@ const updateFish = async (req,res) => {
     
     fish.updateOne(info, newvalues, function(err, obj) {if (err) throw err;});
     
-    fish.find({angler: sessionStorage.getItem('username')}, (err, images) => {
-        images = images.map((image) => {
-            image.img.data = image.img.data.toString('base64');
-            return image.toObject();
-        });
-        console.log(images._id)
-        res.render('viewFish.hbs', {images: images});
-    });
+    return res.redirect("/viewFish")
 }
 
 // register user --------------------------------------

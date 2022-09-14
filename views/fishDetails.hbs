@@ -1,7 +1,7 @@
 <body>
     <h1 class="upload_fish_title">Catch Details</h1>
     <div>
-        {{#each images}}
+        {{#each fishes}}
         
             <div class="fish-flexbox blue1">
                 <img src="data:image/png;base64,{{this.img.data}}">
@@ -16,7 +16,7 @@
         {{/each}}
             <hr>
             {{#if user}}
-                {{#each images}}
+                {{#each fishes}}
                 <form action="" method="POST">
                     <h5>Feel uncomfy with it? Update it!</h5>
                     <div>
