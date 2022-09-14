@@ -45,7 +45,7 @@ const fishDetails = async (req,res) => {
     
     fish.find({_id: req.params._id}, (err, images) => {
         console.log(req.params._id);
-        user = false;
+        const user = false;
         images = images.map((image) => {
             image.img.data = image.img.data.toString('base64');
             console.log(image.angler);
