@@ -212,15 +212,33 @@ header {
 /* Register forms */
 .general-form {
     display: grid;
-    grid-template-columns: repeat(2, auto);
+    grid-template-columns: repeat(1, auto);
+    row-gap: 2%;
 }
 
-.form-columns {
+.general-form input{
+    border-radius: 20px;
+    width: 100%;
+    height: 50%;
+    padding: 5%;
+}
+
+.login-button {
     display: grid;
     grid-template-columns: repeat(1, auto);
-    row-gap: 10%;
 }
 
+.login-button button {
+    cursor: pointer;
+    border-radius: 20px;
+    margin-top: 20px;
+    width: 100%;
+    height: 80%;
+    border: none;
+    color: white;
+    background-color: #0074b7;
+    font-size: 20px;
+}
 /*==========================================================================*/
 
 /*user homepage*/
@@ -454,3 +472,43 @@ button{
     background-color: #003B73;
 }
 
+/*========================================== RESPONSIVE DESIGN ===========================================*/
+
+@media screen and (max-width: 768px) {
+
+    /* Register forms ===========*/
+    .general-form {
+        display:grid ;
+        grid-template-columns: repeat(1, auto);
+        row-gap: 5%;
+        justify-items: center;
+    }
+
+    .general-form input{
+        border-radius: 20px;
+        width: 280%;
+        height: 100%;
+        padding: 5%;
+    }
+
+    .checkbox{
+        margin-top: 40%;
+    }
+
+    .login-button {
+        display: grid;
+        grid-template-columns: repeat(1, auto);
+        justify-items: center;
+    }
+
+    .login-button button {
+        cursor: pointer;
+        border-radius: 20px;
+        width: 200%;
+        height: 80%;
+        border: none;
+        color: white;
+        background-color: #0074b7;
+        font-size: 20px;
+    }
+}
