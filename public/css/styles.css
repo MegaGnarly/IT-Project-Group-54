@@ -29,7 +29,7 @@ footer {
     /* When viewport gets smaller each item will wrap onto a new line */
     list-style: none;
     flex-direction: column;
-    margin-bottom: 32px;
+    margin-bottom: 5px;
 }
 
 .flexbox-footer-row a {
@@ -258,7 +258,7 @@ header {
     justify-content: center;
     align-items: center;
     border: none;
-    filter: drop-shadow(4px 4px 3px #D4D4D4);
+    filter: drop-shadow(4px 4px 3px grey);
     margin-top: 8%;
     margin-bottom: 8%;
     transition: all 0.5s ease 0s;
@@ -275,7 +275,7 @@ header {
     justify-content: center;
     align-items: center;
     border: none;
-    filter: drop-shadow(4px 4px 3px #D4D4D4);
+    filter: drop-shadow(4px 4px 3px grey);
     transition: all 0.5s ease 0s;
     font-size: larger;
     font-weight: bold;
