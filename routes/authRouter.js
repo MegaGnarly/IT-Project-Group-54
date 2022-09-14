@@ -78,7 +78,7 @@ const getDateString = function (date = new Date) {
     }
     newDate = day + "/" + month + "/" + year;
     return newDate;
- };
+};
 
 authRouter.post('/', upload.single('image'), (req, res) => {
     
@@ -87,7 +87,7 @@ authRouter.post('/', upload.single('image'), (req, res) => {
     var uploadedImage = new fish({
         angler: sessionStorage.getItem('username'),
         time: Date.now(),
-        displayTime: date,
+        displayDate: date,
         species: req.body.name,
         size: req.body.size,
         weight: req.body.weight,
