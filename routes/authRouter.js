@@ -66,11 +66,28 @@ authRouter.get('/viewFish',appController.viewFish)
 
 const upload = multer({dest: './uploads'});
 
+const getDateString = function (date = new Date) {
+    var day = date.getDate();
+    var month = date.getMonth() + 1;
+    var year = date.getFullYear();
+    if (day < 10) {
+      day = "0" + day;
+    }
+    if (month < 10) {
+      month = "0" + month;
+    }
+    newDate = day + "/" + month + "/" + year;
+    return newDate;
+ };
+
 authRouter.post('/', upload.single('image'), (req, res) => {
+    
+    date = getDateString();
 
     var uploadedImage = new fish({
         angler: sessionStorage.getItem('username'),
         time: Date.now(),
+        displayTime: date,
         species: req.body.name,
         size: req.body.size,
         weight: req.body.weight,

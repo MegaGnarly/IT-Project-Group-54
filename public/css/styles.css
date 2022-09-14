@@ -349,14 +349,14 @@ button:hover{
     flex-direction: column;
     margin: auto;
     width: 30%;
-    height: 90%;
+    height: 60%;
 }
 
 .fish_details{
     display: flex;
     border-radius: 10px;
     width: 100%;
-    margin: 5%;
+    margin: 2%;
     padding: 3%;
     font-weight: bold;
     border: rgb(151, 151, 151);
@@ -365,7 +365,7 @@ button:hover{
 }
 
 .details_button{
-    width: 100%;
+    width: 90%;
     margin: 5%;
     border-radius: 20px;
     height: 40%;
