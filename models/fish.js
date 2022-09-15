@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 var fishSchema = new mongoose.Schema({
     angler: String,
     time: Date,
-    displayTime: String,
+    displayDate: String,
     species: {type: String, required:true},
     size: Number,
     weight: Number,

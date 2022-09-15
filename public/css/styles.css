@@ -379,6 +379,18 @@ button:hover{
 
 }
 
+.back-button{
+    display: flex;
+    width: 20%;
+}
+
+.back-button button {
+    width: 200%;
+    height: 150%;
+    border-radius: 20px;
+    border:white;
+    color: white;
+}
 /*==========================================================================*/
 
 .upload_fish{
