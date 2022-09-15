@@ -58,6 +58,7 @@ var path = require('path');
 var fish = require('../models/fish');
 
 var multer = require('multer');
+const { setRandomFallback } = require('bcryptjs')
 
 authRouter.get('/upload_fish', isAuthenticated, (req, res) => { 
     res.render('upload_fish.hbs', {layout: 'mainLoggedIn', user: sessionStorage.getItem('username')}) 
@@ -81,10 +82,15 @@ const getDateString = function (date = new Date) {
 };
 
 authRouter.post('/', upload.single('image'), (req, res) => {
+
+    if (!req.file.originalname.match(/\.(jpg|png)$/)){
+        fs.unlinkSync('./uploads/' + req.file.filename);
+        return res.redirect('/upload_fish');
+    }
     
     date = getDateString();
 
-    var uploadedImage = new fish({
+    var uploadedFish = new fish({
         angler: sessionStorage.getItem('username'),
         time: Date.now(),
         displayDate: date,
@@ -97,12 +103,13 @@ authRouter.post('/', upload.single('image'), (req, res) => {
         }
     });
   
-    uploadedImage.save(err => {
+    uploadedFish.save(err => {
         if(err) { console.log(err); return; }
-        console.log('image saved');
+        console.log('fish saved');
         fs.unlinkSync('./uploads/' + req.file.filename);
         res.redirect('/viewFish');
     });
+
 });
 
 // fish detail page related-------------------------------------------------
