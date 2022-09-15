@@ -82,6 +82,19 @@ const updateFish = async (req,res) => {
     return res.redirect("/viewFish")
 }
 
+// render the details of one fish-------------------------------------------
+const weekFish = async (req,res) => {
+    
+    fish.find({time:{$gte: new Date(Date.now()-7*60*60*24*1000)}}, (err, fishes) => {
+        fishes = fishes.map((fish) => {
+            fish.img.data = fish.img.data.toString('base64');
+            return fish.toObject();
+        });
+        res.render('homepage.hbs', {layout: 'main',fishes: fishes});
+    }).sort({size: -1}).limit(1);
+
+}
+
 // register user --------------------------------------
 
 const registerUser = async (req, res) => {
@@ -119,5 +132,6 @@ module.exports = {
     sortWithSize,
     sortWithTime,
     sortWithWeight,
-    resetSort
+    resetSort,
+    weekFish
 }
