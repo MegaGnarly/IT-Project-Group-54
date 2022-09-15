@@ -356,12 +356,10 @@ button:hover{
     display: flex;
     border-radius: 10px;
     width: 100%;
-    margin: 2%;
+    margin: 3%;
     padding: 3%;
     font-weight: bold;
-    border: rgb(151, 151, 151);
-    border-width: 3px;
-    border-style: solid;
+    color: white;
 }
 
 .details_button{
