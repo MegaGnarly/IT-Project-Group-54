@@ -1,46 +1,30 @@
-<main style="display: grid; justify-items: center">
-
+<body class="upload_fish"></body>
+    <div class="upload_fish_form" style="display: flex; justify-items: center">
+        {{#if error}}
+            <p class="alert" style="text-align: center">{{errorMessage}}</p>
+        {{/if}}
     <!-- Register new user -->
 
-    <h1>Register as a user</h1>
+        <h1 style="text-align: center">Register as a user</h1>
 
-    <form action="" method="POST" style="width:20%">
-        <div class="general-form">
-            <div class="form-columns" style="row-gap: 15%">
+        <form action="" method="POST">
+            <div class="general-form">
                 <label for="first_name"><b>First Name:</b></label>
+                <input type="text" id="first_name" name="first_name" placeholder="First name" required>
                 <label for="last_name"><b>Last Name:</b></label>
+                <input type="text" id="last_name" name="last_name" placeholder="Last name" required>
                 <label for="username"><b>Username:</b></label>
+                <input type="text" id="username" name="username" placeholder="Username" required>
                 <label for="password"><b>Password:</b></label>
-                <br/>
+                <input type="password" id="password" name="password" placeholder="Password" required> 
+                <label for="password"><b>Confirm Password:</b></label>
+                <input type="password" id="rpassword" name="rpassword" placeholder="Password" required> 
+                
             </div>
 
-            <div class="form-columns">
-                <input type="text" id="first_name" name="first_name" required>
-                <input type="text" id="last_name" name="last_name" required>
-                <input type="text" id="username" name="username" required>
-                <input type="password" id="password" name="password" required> 
+            <div class="login-button">
+                    <button class="viewfish_button blue1" type="submit" value="Register">Register</button>
             </div>
-            
-        </div>
-        <br/>
-        <br/>
-
-        <!-- Checkbox to show password -->
-        <div>
-            <input type="checkbox" onclick="myPassword()">Show Password
-        </div>
-        <script>
-            function myPassword() {
-                var x = document.getElementById("password");
-                if (x.type === "password") {
-                    x.type = "text";
-                } else {
-                    x.type = "password";
-                }
-            }
-        </script>
-
-        <br/>
-        <input type="submit" value="Register"/>
-    </form>
-</main> 
+        </form>
+    </div>
+</body>

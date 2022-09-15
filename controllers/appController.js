@@ -85,22 +85,27 @@ const updateFish = async (req,res) => {
 // register user --------------------------------------
 
 const registerUser = async (req, res) => {
-    const newUser = new User ({
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
-        username: req.body.username,
-        password: req.body.password 
-    })
-    try{
-        await newUser.save();
-        console.log('New user registered')
-        return res.redirect('./');
-    } catch (err) {
-        console.log("Error when registering user");
-        console.log(err);
-        res.status(400).send(err);
-        return res.redirect('./');
+    if ((req.body.password != req.body.rpassword) || req.body.password === "") { 
+        return res.render('sign_up.hbs', {error: true, errorMessage: "Please verify that your passwords match and try again.", layout: 'main'})
     }
+        const newUser = new User ({
+            first_name: req.body.first_name,
+            last_name: req.body.last_name,
+            username: req.body.username,
+            password: req.body.password 
+        })
+        try{
+            await newUser.save();
+            console.log('New user registered')
+            return res.redirect('/login');
+        } catch (err) {
+            console.log("Error when registering user");
+            console.log(err);
+            res.status(400).send(err);
+            return res.redirect('./');
+        }
+    
+    
 };
 
 

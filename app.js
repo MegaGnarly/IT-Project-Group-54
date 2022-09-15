@@ -62,5 +62,5 @@ app.get('*', (req, res) => {
 })
 
 app.listen(process.env.PORT || PORT, () => {
-    console.log('\n\nAppname is running!')
+    console.log('\n\Fish Crate is running!')
 })
