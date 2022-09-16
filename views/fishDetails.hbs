@@ -16,6 +16,17 @@
                     <p>Weight: {{this.weight}}g</p>
                 </div>
             </div>
+            <body>
+      
+    <button class="uploadfish_button blue1" style="width: 30%; margin: auto" onclick="copy()">Copy</button>
+    <script>
+        function copy() {
+            /* Copy text into clipboard */
+            navigator.clipboard.writeText
+                (window.location.href);
+        }
+    </script>
+</body>
         {{/each}}
             <hr>
             {{#if user}}
