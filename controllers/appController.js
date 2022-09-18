@@ -3,25 +3,6 @@ const sessionStorage = require('sessionstorage')
 var fish = require('../models/fish');
 var User = require('../models/user');
 
-// sort fishes in view fish page------------------------------------------------
-var sort = null;
-const sortWithSize = async (req,res) => {
-    sort = {size: -1};
-    return res.redirect('/viewFish')
-}
-const sortWithTime = async (req,res) => {
-    sort = {time: -1};
-    return res.redirect('/viewFish')
-}
-const sortWithWeight = async (req,res) => {
-    sort = {weight: -1};
-    return res.redirect('/viewFish')
-}
-const resetSort = async (req,res) => {
-    sort = null;
-    return res.redirect('/viewFish')
-}
-
 // viewing fish page--------------------------------------------------------------
 
 const viewFish = async (req,res) => {
@@ -36,9 +17,46 @@ const viewFish = async (req,res) => {
         });
         console.log(sessionStorage.getItem('username'))
         res.render('viewFish.hbs', {layout: "mainLoggedIn.hbs", fishes: fishes, user});
-    }).sort(sort);
-    sort = null;
+    })
 }
+
+// filter function in viewFish page-------------------------------------------------------
+const fishFilter = async (req,res) => {
+
+    var sort = null;
+    var sortAttribute = req.body.sort;
+    if (sortAttribute == 'default'){
+        sort = null;
+    }else if (sortAttribute == 'time'){
+        sort = {time: -1};
+    }else if (sortAttribute == 'weight'){
+        sort = {weight: -1};
+    }else if (sortAttribute == 'size'){
+        sort = {size: -1};
+    }
+
+    var searchAttribute = req.body.target;
+    var regex = { $regex: req.body.name, $options: "xi" };
+    if (searchAttribute == 'species'){
+        fish.find({angler: sessionStorage.getItem('username'), species: regex}, (err, fishes)=>action(fishes)).sort(sort);
+    }else if (searchAttribute == 'weather'){
+        fish.find({angler: sessionStorage.getItem('username'), weather: regex}, (err, fishes)=>action(fishes)).sort(sort);
+    }else if (searchAttribute == 'location'){
+        fish.find({angler: sessionStorage.getItem('username'), location: regex}, (err, fishes)=>action(fishes)).sort(sort);
+    }else if (searchAttribute == 'mates'){
+        fish.find({angler: sessionStorage.getItem('username'), mates: regex}, (err, fishes)=>action(fishes)).sort(sort);
+    }
+
+    function action(fishes){
+        fishes = fishes.map((fish) => {
+            fish.img.data = fish.img.data.toString('base64');
+            return fish.toObject();
+        });
+        res.render('viewFish.hbs', {layout: "mainLoggedIn.hbs", fishes: fishes});
+        searchAttribute = null;
+    }
+    
+};
 
 // render the details of one fish-------------------------------------------
 const fishDetails = async (req,res) => {
@@ -75,14 +93,17 @@ const updateFish = async (req,res) => {
 
     var newvalues = { $set: {species: req.body.name,
         size: req.body.size,
-        weight: req.body.weight} };
+        weight: req.body.weight,
+        weather: req.body.weather,
+        location: req.body.location,
+        mates: req.body.mates} };
     
     fish.updateOne(info, newvalues, function(err, obj) {if (err) throw err;});
     
     return res.redirect("/viewFish")
 }
 
-// render the details of one fish-------------------------------------------
+// render the details of one fish in homePage-------------------------------------------
 const weekFish = async (req,res) => {
     
     fish.find({time:{$gte: new Date(Date.now()-7*60*60*24*1000)}}, (err, fishes) => {
@@ -129,9 +150,6 @@ module.exports = {
     fishDetails,
     deleteFish,
     updateFish,
-    sortWithSize,
-    sortWithTime,
-    sortWithWeight,
-    resetSort,
-    weekFish
+    weekFish,
+    fishFilter
 }

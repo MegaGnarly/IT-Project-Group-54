@@ -5,13 +5,32 @@
         <a href="./user"> <button class="blue3">Back</button> </a>
     </div> 
     <div>
-        <div class="fish_sort_header">
-            <p class="sort_with">Sort with: </p>
-            <a class="sort_boxes" href = "/sortWithTime"><button class ="sort_button blue2" type="button">Time</button></a>
-            <a class="sort_boxes" href = "/sortWithSize"><button class ="sort_button blue2" type="button">Size</button></a>
-            <a class="sort_boxes" href = "/sortWithWeight"><button class ="sort_button blue2" type="button">Weight</button></a>
-            <a class="sort_boxes" href = "/reset"><button class ="sort_button blue2" type="button">Reset</button></a>
-        </div>
+        <form action="/search" method="POST">
+
+            <h1 class="upload_fish_title"><label class="upload_fish_section" for="name">Sort with:</label></h1>
+            <select class="sort_with" name="sort">
+                <option value="default">Default</option>
+                <option value="time">Time</option>
+                <option value="size">Size</option>
+                <option value="weight">Weight</option>
+            </select>
+
+            <h1 class="upload_fish_title"><label class="upload_fish_section" for="name">Filter by:</label></h1>
+            <select name="target">
+                <option value="species">Species</option>
+                <option value="weather">Weather</option>
+                <option value="location">Location</option>
+                <option value="mates">Mates</option>
+            </select>
+
+            <input class="upload_fish_input" type="text" id="name" placeholder="Name" value="" name="name">
+            <button class="upload_fish_submit blue2" type="submit">Search</button>
+
+        </form>
+    </div>
+
+<hr>
+
         {{#each fishes}}
         <div class="fish-flexbox blue1">
             <img class="fish_image" src="data:image/png;base64,{{this.img.data}}">

@@ -118,10 +118,7 @@ authRouter.get('/delete/:_id',appController.deleteFish)
 authRouter.post('/fishDetails/:_id',appController.updateFish)
 
 // fish viewing page related------------------------------------------------
-authRouter.get('/sortWithTime',appController.sortWithTime)
-authRouter.get('/sortWithSize',appController.sortWithSize)
-authRouter.get('/sortWithWeight',appController.sortWithWeight)
-authRouter.get('/reset',appController.resetSort)
+authRouter.post('/search', appController.fishFilter)
 
 
 //-----------------------------------------------------------------

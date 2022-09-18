@@ -13,7 +13,10 @@ var fishSchema = new mongoose.Schema({
     {
         data: Buffer,
         contentType: String
-    }
+    },
+    weather: String,
+    location: String,
+    mates: String
 })
 
 const fish = mongoose.model('fish', fishSchema)

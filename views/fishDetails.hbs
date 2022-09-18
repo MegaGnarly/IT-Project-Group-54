@@ -14,6 +14,9 @@
                     <p>Species: {{this.species}}</p>
                     <p>Size: {{this.size}}cm</p>
                     <p>Weight: {{this.weight}}g</p>
+                    <p>Weather: {{this.weather}}</p>
+                    <p>Location: {{this.Location}}</p>
+                    <p>Mates: {{this.mates}}</p>
                 </div>
             </div>
             <body>
@@ -45,6 +48,18 @@
                         <div>
                             <label class="upload_fish_section" for="info">Weight (in g): </label>
                             <input class="upload_fish_input" type="number" id="weight" placeholder="Weight" value="{{this.weight}}" name="weight">
+                        </div>
+                        <div>
+                            <label class="upload_fish_section" for="info">Weather: </label>
+                            <input class="upload_fish_input" type="text" id="weather" placeholder="weather" value="{{this.weather}}" name="weather">
+                        </div>
+                        <div>
+                            <label class="upload_fish_section" for="info">Location: </label>
+                            <input class="upload_fish_input" type="text" id="location" placeholder="location" value="{{this.location}}" name="location">
+                        </div>
+                        <div>
+                            <label class="upload_fish_section" for="info">Mates: </label>
+                            <input class="upload_fish_input" type="text" id="mates" placeholder="mates" value="{{this.mates}}" name="mates">
                         </div>
                         <button class = "details_button blue1" type="submit" onclick = alert("updating")>Update</button>
                     </form>
