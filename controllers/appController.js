@@ -4,7 +4,6 @@ var fish = require('../models/fish');
 var User = require('../models/user');
 
 // viewing fish page--------------------------------------------------------------
-
 const viewFish = async (req,res) => {
     if (!req.isAuthenticated()) {
         return res.redirect('/login')
@@ -117,7 +116,6 @@ const weekFish = async (req,res) => {
 }
 
 // register user --------------------------------------
-
 const registerUser = async (req, res) => {
     if ((req.body.password != req.body.rpassword) || req.body.password === "") { 
         return res.render('sign_up.hbs', {error: true, errorMessage: "Please verify that your passwords match and try again.", layout: 'main'})
@@ -141,7 +139,6 @@ const registerUser = async (req, res) => {
     
     
 };
-
 
 //exports----------------------------------------------
 module.exports = {

@@ -2,7 +2,7 @@
     
     <h1 class="upload_fish_title">Uploaded Fish</h1>
     <div class="back-button">
-        <a href="./user"> <button class="blue3">Back</button> </a>
+        <a><button class="blue3" onclick=window.history.back()>Back</button></a>
     </div> 
     <div>
         <form action="/search" method="POST">
@@ -16,7 +16,7 @@
             </select>
 
             <h1 class="upload_fish_title"><label class="upload_fish_section" for="name">Filter by:</label></h1>
-            <select name="target">
+            <select class="sort_with" name="target">
                 <option value="species">Species</option>
                 <option value="weather">Weather</option>
                 <option value="location">Location</option>

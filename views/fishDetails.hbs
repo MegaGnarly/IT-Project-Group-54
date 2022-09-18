@@ -1,7 +1,7 @@
 <body>
     <h1 class="upload_fish_title">Catch Details</h1>
     <div class="back-button">
-        <a href="../viewFish"> <button class="blue3">Back</button> </a>
+        <a><button class="blue3" onclick=window.history.back()>Back</button></a>
     </div> 
     <div>
         {{#each fishes}}
@@ -15,18 +15,23 @@
                     <p>Size: {{this.size}}cm</p>
                     <p>Weight: {{this.weight}}g</p>
                     <p>Weather: {{this.weather}}</p>
-                    <p>Location: {{this.Location}}</p>
+                    <p>Location: {{this.location}}</p>
                     <p>Mates: {{this.mates}}</p>
                 </div>
             </div>
             <body>
       
-    <button class="uploadfish_button blue1" style="width: 30%; margin: auto" onclick="copy()">Copy</button>
+    <button class="uploadfish_button blue1" style="width: 30%; margin: auto" onfocus="copy()" onclick="jump()">Share</button>
     <script>
         function copy() {
             /* Copy text into clipboard */
             navigator.clipboard.writeText
                 (window.location.href);
+        }
+        function jump(){
+            if (confirm("share it to Facebook?")){
+                window.open("https://www.facebook.com/");
+            }
         }
     </script>
 </body>
