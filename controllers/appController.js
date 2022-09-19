@@ -37,13 +37,17 @@ const fishFilter = async (req,res) => {
     var searchAttribute = req.body.target;
     var regex = { $regex: req.body.name, $options: "xi" };
     if (searchAttribute == 'species'){
-        fish.find({angler: sessionStorage.getItem('username'), species: regex}, (err, fishes)=>action(fishes)).sort(sort);
+        fish.find({angler: sessionStorage.getItem('username'), species: regex},
+         (err, fishes)=>action(fishes)).sort(sort);
     }else if (searchAttribute == 'weather'){
-        fish.find({angler: sessionStorage.getItem('username'), weather: regex}, (err, fishes)=>action(fishes)).sort(sort);
+        fish.find({angler: sessionStorage.getItem('username'), weather: regex},
+         (err, fishes)=>action(fishes)).sort(sort);
     }else if (searchAttribute == 'location'){
-        fish.find({angler: sessionStorage.getItem('username'), location: regex}, (err, fishes)=>action(fishes)).sort(sort);
+        fish.find({angler: sessionStorage.getItem('username'), location: regex},
+         (err, fishes)=>action(fishes)).sort(sort);
     }else if (searchAttribute == 'mates'){
-        fish.find({angler: sessionStorage.getItem('username'), mates: regex}, (err, fishes)=>action(fishes)).sort(sort);
+        fish.find({angler: sessionStorage.getItem('username'), mates: regex},
+         (err, fishes)=>action(fishes)).sort(sort);
     }
 
     function action(fishes){
@@ -71,7 +75,6 @@ const fishDetails = async (req,res) => {
             }
             return fish.toObject();
         });
-        
         res.render('fishDetails.hbs', {layout: "mainLoggedIn.hbs",fishes: fishes, user});
     });
 
@@ -140,6 +143,128 @@ const registerUser = async (req, res) => {
     
 };
 
+const myCareer = async (req,res) => {
+
+    var rec = await fish.find({angler: sessionStorage.getItem('username')});
+
+    var locList = new Array();
+    var speList = new Array();
+    var matList = new Array();
+    var weaList = new Array();
+
+    for (key in rec) { 
+        if(rec[key].location!=undefined){
+            var loc = rec[key].location;
+            locList.push(loc);
+        }
+
+        if(rec[key].species!=undefined){
+            var spe = rec[key].species;
+            speList.push(spe);
+        }
+
+        if(rec[key].mates!=undefined){
+            var mat = rec[key].mates;
+            matList.push(mat);
+        }
+
+        if(rec[key].weather!=undefined){
+            var wea = rec[key].weather;
+            weaList.push(wea);
+        }
+    
+    }
+
+    var totalWeight = 0
+    for(key in rec){
+        totalWeight+=rec[key].weight;
+    }
+
+    var maxLoc = null;
+    var maxLocNum = 0;
+    for (key in locList){
+        var regex = { $regex: locList[key], $options: "xi" };
+        var n = await fish.find({angler: sessionStorage.getItem('username'), location: regex}).count();
+        if (n>=maxLocNum){
+            maxLocNum = n;
+            maxLoc = locList[key];
+        }
+    }
+
+    var maxSpe = null;
+    var maxSpeNum = 0;
+    for (key in speList){
+        var regex = { $regex: speList[key], $options: "xi" };
+        var n = await fish.find({angler: sessionStorage.getItem('username'), species: regex}).count();
+        if (n>=maxSpeNum){
+            maxSpeNum = n;
+            maxSpe = speList[key];
+        }
+    }
+
+    var maxMat = null;
+    var maxMatNum = 0;
+    for (key in matList){
+        console.log(matList[key])
+        var regex = { $regex: matList[key], $options: "xi" };
+        var n = await fish.find({angler: sessionStorage.getItem('username'), mates: regex}).count();
+        if (n>=maxMatNum){
+            maxMatNum = n;
+            maxMat = matList[key];
+        }
+    }
+
+    var maxWea = null;
+    var maxWeaNum = 0;
+    for (key in weaList){
+        var regex = { $regex: weaList[key], $options: "xi" };
+        var n = await fish.find({angler: sessionStorage.getItem('username'), weather: regex}).count();
+        if (n>=maxWeaNum){
+            maxWeaNum = n;
+            maxWea = weaList[key];
+        }
+    }
+
+    var record = {record:{loc: maxLoc, locNum: maxLocNum,
+                spe: maxSpe, speNum: maxSpeNum,
+                mat: maxMat, matNum: maxMatNum,
+                wea: maxWea, weaNum: maxWeaNum,
+                totWei: totalWeight}}
+
+    fish.find({angler: sessionStorage.getItem('username')}, (err, fishes) => {
+        fishes = fishes.map((fish) => {
+            fish.img.data = fish.img.data.toString('base64');
+            return fish.toObject();
+        });
+        var result = {fishes: fishes, record: record};
+        res.render('myCareer.hbs', {layout: "mainLoggedIn.hbs",result: result});
+    }).sort({size: -1}).limit(1);
+}
+
+const recommend = async (req,res) => {
+    var regex1 = { $regex: req.body.name, $options: "xi" };
+    var rec = await fish.find({species: regex1});
+    var locList = new Array();
+    for (key in rec) { 
+        if(rec[key].location!=undefined){
+            var loc = rec[key].location;
+            locList.push(loc);
+        }
+    }
+    var maxLoc = null;
+    var maxLocNum = 0;
+    for (key in locList){
+        var regex2 = { $regex: locList[key], $options: "xi" };
+        var n = await fish.find({species: regex1, location: regex2}).count();
+        if (n>=maxLocNum){
+            maxLocNum = n;
+            maxLoc = locList[key];
+        }
+    }
+    var result = {result:{loc: maxLoc, spe: req.body.name, num:maxLocNum}};
+    return res.render('recommend.hbs', {layout: "mainLoggedIn.hbs",recommend: result});
+}
+
 //exports----------------------------------------------
 module.exports = {
     viewFish,
@@ -148,5 +273,7 @@ module.exports = {
     deleteFish,
     updateFish,
     weekFish,
-    fishFilter
+    fishFilter,
+    myCareer,
+    recommend
 }
