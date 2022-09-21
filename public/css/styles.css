@@ -246,9 +246,32 @@ header {
 /*==========================================================================*/
 
 /*user homepage*/
-.user_homepage_flexbox{
-    height: 600px;
-    width: 50%;
+.user_homepage{
+    width: 90%;
+    margin: auto;
+    display: flex;
+}
+
+.user_report{
+    width: 40%;
+    margin: auto;
+    height: 540px;
+    display: flex;
+}
+
+.report_data{
+    height: 88%;
+    background-color: #003B73;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    border-radius: 20px;
+    width: 100%;
+}
+
+.user_homepage_buttons{
+    height: 540px;
+    width: 40%;
     display: flexbox;
     margin: auto;
 }
@@ -262,7 +285,6 @@ header {
     align-items: center;
     border: 2px solid #f5f5f5;
     margin-top: 8%;
-    margin-bottom: 8%;
     transition: all 0.5s ease 0s;
     font-size: larger;
     font-weight: bold;

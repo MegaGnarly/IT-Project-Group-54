@@ -38,6 +38,9 @@ app.use(
         },
     })
 )
+if (app.get('env') === 'production') {
+    app.set('trust proxy', 1); // Trust first proxy
+}
 
 app.use(passport.authenticate('session'))
 
