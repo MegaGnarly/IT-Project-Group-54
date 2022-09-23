@@ -1,7 +1,4 @@
 <body class="upload_fish"></body>
-    <div class="back-button">
-        <a><button class="blue3" onclick=window.history.back()>Back</button></a>
-    </div> 
     <div class="upload_fish_form" style="display: flex; justify-items: center">
         {{#if error}}
             <p class="alert" style="text-align: center">{{errorMessage}}</p>
@@ -27,6 +24,7 @@
 
             <div class="login-button">
                     <button class="viewfish_button blue1" type="submit" value="Register">Register</button>
+                    <a href="/login"><button class="viewfish_button blue1" type="button">Already have an account? Login!</button></a>
             </div>
         </form>
     </div>

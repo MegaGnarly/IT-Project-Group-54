@@ -11,6 +11,7 @@
                 <div class="fish_details_flexbox">
                     <h5>Angler: {{this.angler}}</h5>
                     <p>Upload Time: {{this.displayDate}}</p>
+                    <p>Period: {{this.period}}</p>
                     <p>Species: {{this.species}}</p>
                     <p>Size: {{this.size}}cm</p>
                     <p>Weight: {{this.weight}}g</p>
@@ -20,8 +21,9 @@
                 </div>
             </div>
             <body>
-      
-    <button class="uploadfish_button blue1" style="width: 30%; margin: auto" onfocus="copy()" onclick="jump()">Share</button>
+    
+    <button class="uploadfish_button blue1" style="width: 30%; margin: auto" onclick="copy()">Copy</button>
+    <button class="uploadfish_button blue1" style="width: 30%; margin: auto" onclick="jump()">Share</button>
     <script>
         function copy() {
             /* Copy text into clipboard */
@@ -34,7 +36,7 @@
             }
         }
     </script>
-</body>
+    </body>
         {{/each}}
             <hr>
             {{#if user}}
@@ -56,7 +58,24 @@
                         </div>
                         <div>
                             <label class="upload_fish_section" for="info">Weather: </label>
-                            <input class="upload_fish_input" type="text" id="weather" placeholder="weather" value="{{this.weather}}" name="weather">
+                            <select class="upload_fish_input" name="weather">
+                                <option value="?" selected disabled hidden>Select an Option</option>
+                                <option value="clear">Clear</option>
+                                <option value="cloudy">Cloudy</option>
+                                <option value="windy">Windy</option>
+                                <option value="stormy">Stormy</option>
+                                <option value="rainy">Rainy</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="upload_fish_section" for="info">Period: </label>
+                            <select class="upload_fish_input" name="period">
+                                <option value="?" selected disabled hidden>Select an Option</option>
+                                <option value="morning">Morning</option>
+                                <option value="noon">Noon</option>
+                                <option value="after noon">After noon</option>
+                                <option value="night">Night</option>
+                            </select>
                         </div>
                         <div>
                             <label class="upload_fish_section" for="info">Location: </label>

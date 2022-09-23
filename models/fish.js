@@ -6,6 +6,7 @@ var fishSchema = new mongoose.Schema({
     angler: String,
     time: Date,
     displayDate: String,
+    period: String,
     species: {type: String, required:true},
     size: Number,
     weight: Number,

@@ -5,7 +5,7 @@ const sessionStorage = require('sessionstorage')
 const appController = require('../controllers/appController')
 require('../models/dbIndex')
 
-appRouter.get('/', appController.weekFish)
+appRouter.get('/', appController.starFish)
 
 //-----------------------------------------------------------------------------------
 

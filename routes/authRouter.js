@@ -120,7 +120,6 @@ authRouter.post('/fishDetails/:_id',appController.updateFish)
 
 // fish viewing page related------------------------------------------------
 authRouter.post('/search', appController.fishFilter)
-authRouter.get('/myCareer',appController.myCareer)
 authRouter.get('/user', appController.user)
 authRouter.get('/sugestion', (req, res) => { 
     res.render('recommend.hbs', {layout: "mainLoggedIn.hbs"}) 
