@@ -1,11 +1,20 @@
 <body class="upload_fish"> 
     <div class="user_homepage">
         <div class="user_report">
-            <div class="report_data">
-                <div>career report</div>
-                <div>total weight</div>
-                <div>best season</div>
-                <div>favourite location</div>
+            <div class="report_data blue1">
+                <h1 style="text-align: center">Catch of the Year!</h1>
+                {{#each result.fishes}}
+                    <img class="best_fish_picture" src="data:image/png;base64,{{this.img.data}}">
+                    {{!-- <p class="best_fish_details blue3">Date: {{this.displayDate}}</p> --}}
+                    <a class="best_details_button blue2" href="/fishDetails/{{this._id}}" type="button">Details</a>
+                {{/each}}
+                
+                {{#each result.record}}
+                <h1 class="career_overview">Your favourite fishing spot is at {{this.loc}} with {{this.locNum}} caught!</h1>
+                <h1 class="career_overview">Your most caught species is {{this.spe}} with {{this.speNum}} caught!</h1>
+                <h1 class="career_overview">You've caught {{this.weaNum}} fish under a {{this.wea}} day!</h1>
+                <h1 class="career_overview">You've caught {{this.totWei}} grams of fishes in total!</h1>
+                {{/each}}
             </div>
         </div>
         <div class="user_homepage_buttons">

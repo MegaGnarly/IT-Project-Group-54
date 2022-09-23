@@ -20,13 +20,14 @@ const isAuthenticated = (req, res, next) => {
 
 // Main page which requires login to access
 // Note use of authentication middleware here
-authRouter.get('/user', isAuthenticated, (req, res) => {
-    console.log("Loaded user homepage (authRouter.js)")
-    console.log(req.user.username)
-    res.render('user_homepage.hbs', {layout: 'mainLoggedIn', user: sessionStorage.getItem('username')})
+// authRouter.get('/user', isAuthenticated, (req, res) => {
+//     console.log("Loaded user homepage (authRouter.js)")
+//     console.log(req.user.username)
+//     appController.user
+//     res.render('user_homepage.hbs', {layout: 'mainLoggedIn', user: sessionStorage.getItem('username')})
 
-    // res.render('patient_dashboard', { user: req.user.toJSON() })
-})
+//     // res.render('patient_dashboard', { user: req.user.toJSON() })
+// })
 
 
 // Login page (with failure message displayed upon login failure)
@@ -120,6 +121,7 @@ authRouter.post('/fishDetails/:_id',appController.updateFish)
 // fish viewing page related------------------------------------------------
 authRouter.post('/search', appController.fishFilter)
 authRouter.get('/myCareer',appController.myCareer)
+authRouter.get('/user', appController.user)
 authRouter.get('/sugestion', (req, res) => { 
     res.render('recommend.hbs', {layout: "mainLoggedIn.hbs"}) 
 });
