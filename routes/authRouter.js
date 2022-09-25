@@ -122,7 +122,7 @@ authRouter.post('/fishDetails/:_id',appController.updateFish)
 authRouter.post('/search', appController.fishFilter)
 authRouter.get('/user', appController.user)
 authRouter.get('/sugestion', (req, res) => { 
-    res.render('recommend.hbs', {layout: "mainLoggedIn.hbs"}) 
+    res.render('recommend.hbs', {layout: 'mainLoggedIn', user: sessionStorage.getItem('username')}) 
 });
 authRouter.post('/suges',appController.recommend)
 

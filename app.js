@@ -67,3 +67,5 @@ app.get('*', (req, res) => {
 app.listen(process.env.PORT || PORT, () => {
     console.log('\n\Fish Crate is running!')
 })
+
+module.exports = app;

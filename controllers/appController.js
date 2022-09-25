@@ -69,7 +69,7 @@ const fishFilter = async (req,res) => {
 
 // render the details of one fish-------------------------------------------
 const fishDetails = async (req,res) => {
-    
+
     fish.find({_id: req.params._id}, (err, fishes) => {
         console.log(req.params._id);
         var user = false;
@@ -287,7 +287,7 @@ const recommend = async (req,res) => {
         }
     }
     var result = {result:{loc: maxLoc, spe: req.body.name, num:maxLocNum}};
-    return res.render('recommend.hbs', {layout: "mainLoggedIn.hbs",recommend: result});
+    return res.render('recommend', {layout: "mainLoggedIn.hbs",recommend: result});
 }
 
 //exports----------------------------------------------
