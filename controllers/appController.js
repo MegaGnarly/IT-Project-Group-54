@@ -61,7 +61,7 @@ const fishFilter = async (req,res) => {
             fish.img.data = fish.img.data.toString('base64');
             return fish.toObject();
         });
-        res.render('viewFish.hbs', {layout: "mainLoggedIn.hbs", fishes: fishes});
+        res.render('viewFish.hbs', {layout: "mainLoggedIn.hbs", fishes: fishes, user: sessionStorage.getItem('username')});
         searchAttribute = null;
     }
     
@@ -91,7 +91,6 @@ const deleteFish = async (req,res) => {
     var info = {_id: req.params._id};
     fish.deleteOne(info, function(err, obj) {if (err) throw err;});
     return res.redirect("/viewFish")
-    
 }
 
 // update details of one fish-------------------------------------------------
@@ -267,6 +266,7 @@ const user = async (req,res) => {
 }
 
 const recommend = async (req,res) => {
+    var user = true;
     var regex1 = { $regex: req.body.name, $options: "xi" };
     var rec = await fish.find({species: regex1});
     var locList = new Array();
@@ -287,7 +287,7 @@ const recommend = async (req,res) => {
         }
     }
     var result = {result:{loc: maxLoc, spe: req.body.name, num:maxLocNum}};
-    return res.render('recommend', {layout: "mainLoggedIn.hbs",recommend: result});
+    return res.render('recommend', {layout: "mainLoggedIn.hbs",recommend: result, user});
 }
 
 //exports----------------------------------------------

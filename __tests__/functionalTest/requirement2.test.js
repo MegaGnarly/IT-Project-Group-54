@@ -1,4 +1,4 @@
-const {openBrowser, goto, write, click, closeBrowser} = require('taiko');
+const {openBrowser, goto, write, click, closeBrowser, accept} = require('taiko');
 
 //Requirement 2
 //I share my catch of the day/month/year to a fellow angler by sending the link or showing him/her in person
@@ -15,6 +15,8 @@ const {openBrowser, goto, write, click, closeBrowser} = require('taiko');
         await click("fish");
         await click("Details");
         await click("Copy");
+        confirm('share it to Facebook?', async () => await accept())
+        await click('Share');
     }catch(error){
         console.log(error)
     }finally{
