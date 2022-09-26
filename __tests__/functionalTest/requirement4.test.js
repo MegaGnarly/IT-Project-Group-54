@@ -1,10 +1,5 @@
 const {openBrowser, goto, write, click, closeBrowser} = require('taiko');
 
-//Requirement 4
-//I want to go fishing in a spot/time slot/weather condition/aiming for species/etc., will I success or not?
-//user stories 4
-//As an Angler, I want to see behaviour/habitat pattern of certain fish 
-//in order to analyse fish patterns for future success
 (async ()=>{
     try{
         await openBrowser();
@@ -26,3 +21,18 @@ const {openBrowser, goto, write, click, closeBrowser} = require('taiko');
         closeBrowser();
     }
 })();
+
+//Requirement 4
+//I want to go fishing in a spot/time slot/weather condition/aiming for species/etc., will I success or not?
+
+//user stories 3
+//As a Researcher/Ecologist, I want to see summaries and reports of individual fish species 
+//in order to perform research on different species of fish or study the fish ecosystem
+
+//user stories 4
+//As an Angler, I want to see behaviour/habitat pattern of certain fish 
+//in order to analyse fish patterns for future success
+
+//user stories 9
+//As an Angler, I want to see if a fishing spot is sunny
+//in order to have a better fishing experience

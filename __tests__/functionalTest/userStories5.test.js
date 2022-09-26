@@ -11,10 +11,8 @@ const {openBrowser, goto, write, click, closeBrowser, accept} = require('taiko')
         await write("password");
         await click("Login");
         await click("fish");
-        await click("Details");
-        await click("Copy");
-        confirm('share it to Facebook?', async () => await accept())
-        await click('Share');
+        await dropDown(below("Sort with:")).select("Time");
+        await click("Search");
     }catch(error){
         console.log(error)
     }finally{
@@ -22,9 +20,6 @@ const {openBrowser, goto, write, click, closeBrowser, accept} = require('taiko')
     }
 })();
 
-//Requirement 2
-//I share my catch of the day/month/year to a fellow angler by sending the link or showing him/her in person
-
-//user stories 7
-//As a Friend of an angler, I want to be able to receive links to a catch
-//in order to remotely see what was caught
+//user stories 5
+//As an Angler, I want to be able to see regular reports 
+//in order to reflect upon my fishing memories and trends
