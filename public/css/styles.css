@@ -596,6 +596,22 @@ button{
     font-weight: bold;
 }
 
+.flexboxthing{
+    display: flex;
+    height: 130%;
+}
+.fish_filter{
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    padding: 0.5%;
+    filter: drop-shadow(4px 4px 3px #D4D4D4);
+    width: 50%;
+    border-radius: 10px;
+    border-color: black;
+    border-width: 3px;  
+}
+
 /*==========================================================================*/
 
 /* Colours */

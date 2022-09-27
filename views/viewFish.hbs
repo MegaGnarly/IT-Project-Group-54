@@ -5,9 +5,8 @@
         <a><button class="blue3" onclick=window.history.back()>Back</button></a>
     </div> 
     <div>
-        <form action="/search" method="POST">
-
-            <h1 class="upload_fish_title"><label class="upload_fish_section" for="name">Sort with:</label></h1>
+        <form action="/search" method="POST" class="flexboxthing">
+            <h1><label for="name">Sort with: </label></h1>
             <select class="sort_with" name="sort">
                 <option value="default">Default</option>
                 <option value="time">Time</option>
@@ -15,7 +14,7 @@
                 <option value="weight">Weight</option>
             </select>
 
-            <h1 class="upload_fish_title"><label class="upload_fish_section" for="name">Filter by:</label></h1>
+            <h1><label for="name">Filter by: </label></h1>
             <select class="sort_with" name="target">
                 <option value="default">Default</option>
                 <option value="period">Period</option>
@@ -25,8 +24,8 @@
                 <option value="mates">Mates</option>
             </select>
 
-            <input class="upload_fish_input" type="text" id="name" placeholder="Name" value="" name="name">
-            <button class="upload_fish_submit blue2" type="submit">Search</button>
+            <input class="fish_filter" type="text" id="name" placeholder="Name" value="" name="name">
+            <button class="blue3" type="submit">Search</button>
 
         </form>
     </div>
