@@ -1,0 +1,25 @@
+<body>
+    <h1 class="upload_fish_title">My star catch</h1>
+    <div>
+        {{#each result.fishes}}
+        <div class="fish-flexbox blue1">
+            <img class="fish_image" src="data:image/png;base64,{{this.img.data}}">
+            <div class="fish_details_flexbox">
+                <p class="fish_details blue3">Date: {{this.displayDate}}</p>
+                <p class="fish_details blue3">Species: {{this.species}}</p>
+                <p class="fish_details blue3">Size: {{this.size}}cm</p>
+                <p class="fish_details blue3">Weight: {{this.weight}}g</p>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    <div>
+        {{#each result.record}}
+        <h1 class="upload_fish_title">you've got {{this.locNum}} fishes at {{this.loc}}</h1>
+        <h1 class="upload_fish_title">you've got {{this.speNum}} {{this.spe}}s</h1>
+        <h1 class="upload_fish_title">you've got {{this.matNum}} fishes with {{this.mat}}</h1>
+        <h1 class="upload_fish_title">you've got {{this.weaNum}} fishes under a {{this.wea}} day</h1>
+        <h1 class="upload_fish_title">you've got {{this.totWei}} grams of fishes in total</h1>
+        {{/each}}
+    </div>
+</body>
