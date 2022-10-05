@@ -1,5 +1,6 @@
 //requires fish and user model----------------------------------
 const sessionStorage = require('sessionstorage')
+const authRouter = require('../routes/authRouter')
 var fish = require('../models/fish');
 var User = require('../models/user');
 
@@ -9,13 +10,17 @@ const viewFish = async (req,res) => {
         return res.redirect('/login')
     }
     var user = true;
+    var found = false;
     fish.find({angler: sessionStorage.getItem('username')}, (err, fishes) => {
+        if(fishes.length>0){
+            found = true;
+        }
         fishes = fishes.map((fish) => {
             fish.img.data = fish.img.data.toString('base64');
             return fish.toObject();
         });
         console.log(sessionStorage.getItem('username'))
-        res.render('viewFish.hbs', {layout: "mainLoggedIn.hbs", fishes: fishes, user});
+        res.render('viewFish.hbs', {layout: "mainLoggedIn.hbs", fishes: fishes, user: user, found: found});
     })
 }
 
@@ -57,11 +62,15 @@ const fishFilter = async (req,res) => {
     }
 
     function action(fishes){
+        var found = false;
+        if(fishes.length>0){
+            found = true;
+        }
         fishes = fishes.map((fish) => {
             fish.img.data = fish.img.data.toString('base64');
             return fish.toObject();
         });
-        res.render('viewFish.hbs', {layout: "mainLoggedIn.hbs", fishes: fishes, user: sessionStorage.getItem('username')});
+        res.render('viewFish.hbs', {layout: "mainLoggedIn.hbs", fishes: fishes, user: sessionStorage.getItem('username'), found: found});
         searchAttribute = null;
     }
     
@@ -113,13 +122,32 @@ const updateFish = async (req,res) => {
 
 // render the details of one fish in homePage-------------------------------------------
 const starFish = async (req,res) => {
+
+    date = function (date = new Date) {
+        var day = date.getDate();
+        var month = date.getMonth() + 1;
+        var year = date.getFullYear();
+        if (day < 10) {
+          day = "0" + day;
+        }
+        if (month < 10) {
+          month = "0" + month;
+        }
+        newDate = day + "/" + month + "/" + year;
+        return newDate;
+    };
+
+    var todayTotal = await fish.find({displayDate:date}).count();
+
+    var total = await fish.find().count();
     
-    fish.find((err, fishes) => {
+    fish.find({time:{$gte: new Date(Date.now()-30*60*60*24*1000)}}, (err, fishes) => {
         fishes = fishes.map((fish) => {
             fish.img.data = fish.img.data.toString('base64');
             return fish.toObject();
         });
-        res.render('homepage.hbs', {layout: 'main',fishes: fishes});
+        var result = {todayTotal: todayTotal, total: total, fishes: fishes};
+        res.render('homepage.hbs', {layout: 'main',result: result});
     }).sort({size: -1}).limit(1);
 
 }

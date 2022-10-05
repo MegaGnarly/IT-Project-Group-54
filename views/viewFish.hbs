@@ -31,6 +31,7 @@
     </div>
 
 <hr>
+{{#if found}}
 
         {{#each fishes}}
         <div class="fish-flexbox blue1">
@@ -45,4 +46,9 @@
         </div>
         {{/each}}
     </div>
+    {{else}}
+        <div>
+            <h1 class="upload_fish_title">Sorry, looks there are no record found.</h1>
+        </div>
+    {{/if}}
 </body>

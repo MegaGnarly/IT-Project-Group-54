@@ -11,9 +11,9 @@
     </section>
     <section id="stat_section">
         <div class="column_pair">    
-            <h1 class="upload_fish_title">Star of Fish Crate</h1>
+            <h1 class="upload_fish_title">Star of The Month</h1>
             <div>
-                {{#each fishes}}
+                {{#each result.fishes}}
                 <div class="fish-flexbox blue1">
                     <img class="fish_image" src="data:image/png;base64,{{this.img.data}}">
                     <div class="fish_details_flexbox">
@@ -32,8 +32,8 @@
                 {{!-- {{#each fishes}} --}}
                 <div class="fish-flexbox blue1">
                     <div class="fish_details_flexbox">
-                        <p class="fish_details blue3">Fishes Caught Today: </p>
-                        <p class="fish_details blue3">Fishes Caught All Time: </p>
+                        <p class="fish_details blue3">Fishes Caught Today: {{result.todayTotal}}</p>
+                        <p class="fish_details blue3">Fishes Caught All Time: {{result.total}}</p>
                     {{!-- <img class="fish_image" src="data:image/png;base64,{{this.img.data}}">
                     <div class="fish_details_flexbox">
                         <p class="fish_details blue3">Date: {{this.displayDate}}</p>

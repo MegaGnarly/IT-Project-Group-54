@@ -9,7 +9,7 @@ const {openBrowser, goto, write, click, closeBrowser} = require('taiko');
         await write("user");
         await click("password");
         await write("password");
-        await click("Login");
+        await click("Sign in");
     }catch(error){
         console.log(error)
     }finally{
