@@ -415,7 +415,7 @@ button:hover{
 
 .fish_image{
     display: flex;
-    max-width: 30%;
+    width: 30%;
     max-height: 10%;
 }
 

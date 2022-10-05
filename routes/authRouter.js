@@ -98,6 +98,10 @@ authRouter.post('/', upload.single('image'), (req, res) => {
         species: req.body.name,
         size: req.body.size,
         weight: req.body.weight,
+        weather: req.body.weather,
+        period: req.body.period,
+        location: req.body.location,
+        mates: req.body.mates,
         img: {
             data: fs.readFileSync('./uploads/' + req.file.filename),
             imgType: req.file.mimetype

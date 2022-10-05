@@ -16,6 +16,35 @@
                     <input class="upload_fish_input" type="number" id="weight" placeholder="Weight" value="0" name="weight">
                 </div>
                 <div>
+                    <label class="upload_fish_section" for="info">Weather: </label>
+                    <select class="upload_fish_input" name="weather">
+                        <option value="?" selected disabled hidden>Select an Option</option>
+                        <option value="clear">Clear</option>
+                        <option value="cloudy">Cloudy</option>
+                        <option value="windy">Windy</option>
+                        <option value="stormy">Stormy</option>
+                        <option value="rainy">Rainy</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="upload_fish_section" for="info">Period: </label>
+                    <select class="upload_fish_input" name="period">
+                        <option value="?" selected disabled hidden>Select an Option</option>
+                        <option value="morning">Morning</option>
+                        <option value="noon">Noon</option>
+                        <option value="after noon">After noon</option>
+                        <option value="night">Night</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="upload_fish_section" for="info">Location: </label>
+                    <input class="upload_fish_input" type="text" id="location" placeholder="location" value="{{this.location}}" name="location">
+                </div>
+                <div>
+                    <label class="upload_fish_section" for="info">Mates: </label>
+                    <input class="upload_fish_input" type="text" id="mates" placeholder="mates" value="{{this.mates}}" name="mates">
+                </div>
+                <div>
                     <label class="upload_fish_section" for="image">Upload Image:</label>
                     <input class="upload_fish_input" type="file" id="image" name="image" value="" accept="image/*" required>
                 </div>
