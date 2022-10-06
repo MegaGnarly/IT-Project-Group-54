@@ -3,7 +3,7 @@
         <form action="/suges" method="POST">
 
             <h1 class="upload_fish_title"><label class="upload_fish_section" for="name">Search species:</label></h1>
-            <input class="upload_fish_input" type="text" id="name" placeholder="specy" value="" name="name" required>
+            <input class="upload_fish_input" type="text" id="name" placeholder="Species" value="" name="name" required>
             <button class="upload_fish_submit blue2" type="submit">Search</button>
 
         </form>
@@ -19,7 +19,7 @@
         <button class="blue2" onclick=window.open("https://www.google.com.au/maps/search/{{this.loc}}")>Let's Go!</button>
         {{else}}
         <div>
-            <h1 class="upload_fish_title">Sorry, looks this specy is not recorded yet.</h1>
+            <h1 class="upload_fish_title">Sorry, looks this species is not recorded yet.</h1>
         </div>
         {{/if}}
         {{/each}}

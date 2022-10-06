@@ -1,12 +1,12 @@
 <body class="upload_fish"> 
     <div class="user_homepage">
         <div class="user_report">
-            <div class="report_data blue1">
+            <div class="report_data bluegrad">
                 <h1 style="text-align: center">Catch of the Year!</h1>
                 {{#each result.fishes}}
                     <img class="best_fish_picture" src="data:image/png;base64,{{this.img.data}}">
                     {{!-- <p class="best_fish_details blue3">Date: {{this.displayDate}}</p> --}}
-                    <a class="best_details_button blue2" href="/fishDetails/{{this._id}}" type="button">Details</a>
+                    <a class="best_details_button blue1" href="/fishDetails/{{this._id}}" type="button">Details</a>
                 {{/each}}
                 
                 {{#each result.record}}
@@ -24,5 +24,5 @@
     </div>
 </body>
 <div>
-        <a href="sugestion"><button class="blue2">sugestion</button></a>
+        <a href="suggestion"><button class="suggestion_button blue2">Suggestion</button></a>
 </div> 
