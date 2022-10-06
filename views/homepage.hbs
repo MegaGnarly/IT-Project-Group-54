@@ -2,49 +2,44 @@
     <section class="hero_section">
         <div class="hero_text column_pair">
             <h1>Share and Learn</h1>
-            <h3>Capture all your best catches and learn from auto-generated reports</h3>
+            
         </div>
         <div class="scroll_button_container column_pair">
             <a href="#stat_section"><img id="scroll_button" src="/assets/down_button.png"></a>
+            
         </div>
         
     </section>
+    <h3 class="text_between">Capture all your best catches and learn from auto-generated reports</h3>
     <section id="stat_section">
-        <div class="column_pair">    
-            <h1 class="upload_fish_title">Star of The Month</h1>
-            <div>
-                {{#each result.fishes}}
-                <div class="fish-flexbox blue1">
-                    <img class="fish_image" src="data:image/png;base64,{{this.img.data}}">
-                    <div class="fish_details_flexbox">
-                        <p class="fish_details blue3">Date: {{this.displayDate}}</p>
-                        <p class="fish_details blue3">Species: {{this.species}}</p>
-                        <p class="fish_details blue3">Size: {{this.size}}cm</p>
-                        <p class="fish_details blue3">Weight: {{this.weight}}g</p>
+        <div class="homepage_stats">
+            <div class="column_pair">    
+                <h1 class="upload_fish_title">Catch of The Month</h1>
+                <div>
+                    {{#each result.fishes}}
+                    <div class="fish-flexbox blue1">
+                        <img class="fish_image" src="data:image/png;base64,{{this.img.data}}">
+                        <div class="fish_details_flexbox">
+                            <p class="fish_details blue3">Date: {{this.displayDate}}</p>
+                            <p class="fish_details blue3">Species: {{this.species}}</p>
+                            <p class="fish_details blue3">Size: {{this.size}}cm</p>
+                            <p class="fish_details blue3">Weight: {{this.weight}}g</p>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+            <div class="column_pair">    
+                <h1 class="upload_fish_title">All User Stats</h1>
+                <div>
+                    <div class="fish-flexbox blue1">
+                        <div class="fish_details_flexbox">
+                            <p class="fish_details blue3">Fishes Caught Today: {{result.todayTotal}}</p>
+                            <p class="fish_details blue3">Fishes Caught All Time: {{result.total}}</p>
+                        </div>
                     </div>
                 </div>
-                {{/each}}
             </div>
         </div>
-                <div class="column_pair">    
-            <h1 class="upload_fish_title">All User Stats</h1>
-            <div>
-                {{!-- {{#each fishes}} --}}
-                <div class="fish-flexbox blue1">
-                    <div class="fish_details_flexbox">
-                        <p class="fish_details blue3">Fishes Caught Today: {{result.todayTotal}}</p>
-                        <p class="fish_details blue3">Fishes Caught All Time: {{result.total}}</p>
-                    {{!-- <img class="fish_image" src="data:image/png;base64,{{this.img.data}}">
-                    <div class="fish_details_flexbox">
-                        <p class="fish_details blue3">Date: {{this.displayDate}}</p>
-                        <p class="fish_details blue3">Species: {{this.species}}</p>
-                        <p class="fish_details blue3">Size: {{this.size}}cm</p>
-                        <p class="fish_details blue3">Weight: {{this.weight}}g</p> --}}
-                    </div>
-                </div>
-                {{!-- {{/each}} --}}
-            </div>
-        </div>
-
     </section>
 </body>

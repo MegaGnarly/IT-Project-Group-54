@@ -75,6 +75,8 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    margin: 0;
+    width: auto;
 }
 
 .flexbox-main-content {
@@ -100,7 +102,7 @@ header {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding: 12px 1%;
+    padding: 12px;
     /* Padding padding on top and bottom, padding on sides. */
     background-color: #F7F7F7;
 }
@@ -552,6 +554,7 @@ button{
 /*site homepage*/
 .home_container {
     background: linear-gradient(180deg, #BFD7ED 0%, #60A3D9 100%);
+    display: flex;
 }
 
 .hero_section {
@@ -559,15 +562,28 @@ button{
     display:flex;
     flex-direction: row;
     height:90vh;
-    width:100vw;
+    width:100%;
 }
 
-#stat_section {
+.text_between{
+    display: flex;
+    justify-content: center;
+    color: #003B73;
+    font-size: x-large;
+}
+
+.stat_section {
     color:#003B73;
     display:flex;
     flex-direction: row;
     height:75vh;
     width:100vw;
+}
+
+.homepage_stats{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .scroll_button_container {
