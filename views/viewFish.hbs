@@ -1,12 +1,12 @@
 <body class="bluegrad">
     
     <h1 class="upload_fish_title">Uploaded Fish</h1>
-    <div class="back-button">
-        <a><button class="blue3" onclick=window.history.back()>Back</button></a>
-    </div> 
-    <div>
+    <div class="search-bar">
+        <div class="back-box-search">
+            <a><button class="back-button-search blue3" onclick=window.history.back()>Back</button></a>
+        </div>
         <form action="/search" method="POST" class="search_options_form">
-            <h1><label for="name">Sort with: </label></h1>
+            <h2><label for="name">Sort with: </label></h2>
             <select class="sort_with" name="sort">
                 <option value="default">Default</option>
                 <option value="time">Time</option>
@@ -14,7 +14,7 @@
                 <option value="weight">Weight</option>
             </select>
 
-            <h1><label for="name">Filter by: </label></h1>
+            <h2><label for="name">Filter by: </label></h2>
             <select class="sort_with" name="target">
                 <option value="default">Default</option>
                 <option value="period">Period</option>
@@ -25,8 +25,9 @@
             </select>
 
             <input class="fish_filter" type="text" id="name" placeholder="Name" value="" name="name">
-            <button class="blue3" type="submit">Search</button>
-
+            <div class="search-box">
+                <button class="search-button blue3" type="submit">Search</button>
+            </div>
         </form>
     </div>
 
