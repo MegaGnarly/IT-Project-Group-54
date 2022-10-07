@@ -40,7 +40,7 @@ const fishFilter = async (req,res) => {
     }
 
     var searchAttribute = req.body.target;
-    var regex = { $regex: req.body.name, $options: "xi" };
+    var regex = { $regex: req.body.name.trim(), $options: "i" };
     if (searchAttribute == 'default'){
         fish.find({angler: sessionStorage.getItem('username')},
          (err, fishes)=>action(fishes)).sort(sort);
@@ -196,7 +196,7 @@ const user = async (req,res) => {
     for (key in rec) { 
         totalWeight+=rec[key].weight;
         if(rec[key].location!=undefined&&rec[key].location!=''){
-            var loc = rec[key].location;
+            var loc = rec[key].location.trim();
             locList.push(loc);
         }
 
@@ -206,12 +206,12 @@ const user = async (req,res) => {
         }
 
         if(rec[key].species!=undefined&&rec[key].species!=''){
-            var spe = rec[key].species;
+            var spe = rec[key].species.trim();
             speList.push(spe);
         }
 
         if(rec[key].mates!=undefined&&rec[key].mates!=''){
-            var mat = rec[key].mates;
+            var mat = rec[key].mates.trim();
             matList.push(mat);
         }
 
@@ -225,7 +225,7 @@ const user = async (req,res) => {
     var maxPri = null;
     var maxPriNum = 0;
     for (key in priList){
-        var regex = { $regex: priList[key], $options: "xi" };
+        var regex = { $regex: priList[key], $options: "i" };
         var n = await fish.find({angler: sessionStorage.getItem('username'), period: regex}).count();
         if (n>=maxPriNum){
             maxPriNum = n;
@@ -236,7 +236,8 @@ const user = async (req,res) => {
     var maxLoc = null;
     var maxLocNum = 0;
     for (key in locList){
-        var regex = { $regex: locList[key], $options: "xi" };
+        console.log(maxLoc+" with "+maxLocNum);
+        var regex = { $regex: locList[key], $options: "i" };
         var n = await fish.find({angler: sessionStorage.getItem('username'), location: regex}).count();
         if (n>=maxLocNum){
             maxLocNum = n;
@@ -247,7 +248,8 @@ const user = async (req,res) => {
     var maxSpe = null;
     var maxSpeNum = 0;
     for (key in speList){
-        var regex = { $regex: speList[key], $options: "xi" };
+        console.log(maxSpe+" with "+maxSpeNum);
+        var regex = { $regex: speList[key], $options: "i" };
         var n = await fish.find({angler: sessionStorage.getItem('username'), species: regex}).count();
         if (n>=maxSpeNum){
             maxSpeNum = n;
@@ -259,7 +261,7 @@ const user = async (req,res) => {
     var maxMatNum = 0;
     for (key in matList){
         console.log(matList[key])
-        var regex = { $regex: matList[key], $options: "xi" };
+        var regex = { $regex: matList[key], $options: "i" };
         var n = await fish.find({angler: sessionStorage.getItem('username'), mates: regex}).count();
         if (n>=maxMatNum){
             maxMatNum = n;
@@ -270,7 +272,7 @@ const user = async (req,res) => {
     var maxWea = null;
     var maxWeaNum = 0;
     for (key in weaList){
-        var regex = { $regex: weaList[key], $options: "xi" };
+        var regex = { $regex: weaList[key], $options: "i" };
         var n = await fish.find({angler: sessionStorage.getItem('username'), weather: regex}).count();
         if (n>=maxWeaNum){
             maxWeaNum = n;
