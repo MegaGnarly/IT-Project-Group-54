@@ -120,24 +120,27 @@ const updateFish = async (req,res) => {
     return res.redirect("/viewFish")
 }
 
+// create a simpler string to store date----------------------------------------
+const getDateString = function (date = new Date) {
+    var day = date.getDate();
+    var month = date.getMonth() + 1;
+    var year = date.getFullYear();
+    if (day < 10) {
+      day = "0" + day;
+    }
+    if (month < 10) {
+      month = "0" + month;
+    }
+    newDate = day + "/" + month + "/" + year;
+    return newDate;
+};
+
 // render the details of one fish in homePage-------------------------------------------
 const starFish = async (req,res) => {
 
-    date = function (date = new Date) {
-        var day = date.getDate();
-        var month = date.getMonth() + 1;
-        var year = date.getFullYear();
-        if (day < 10) {
-          day = "0" + day;
-        }
-        if (month < 10) {
-          month = "0" + month;
-        }
-        newDate = day + "/" + month + "/" + year;
-        return newDate;
-    };
+    today = getDateString();
 
-    var todayTotal = await fish.find({displayDate:date}).count();
+    var todayTotal = await fish.find({displayDate:today}).count();
 
     var total = await fish.find().count();
     
@@ -328,5 +331,6 @@ module.exports = {
     starFish,
     fishFilter,
     recommend,
-    user
+    user,
+    getDateString
 }
