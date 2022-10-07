@@ -631,6 +631,7 @@ button{
     justify-content: center;
     color: #003B73;
     font-size: x-large;
+    text-align: center;
 }
 
 .stat_section {
@@ -668,7 +669,6 @@ button{
 }
 
 .hero_text {
-    position: relative;
     margin-left: 5%;
     top: 15vh;
 }
@@ -725,6 +725,45 @@ button{
     .upload_fish_form{
         width: 100%;
     }
+
+    .hero_section{
+        flex-direction: column;
+    }
+
+    .scroll_button_container{
+        background-image: none;
+    }
+
+    .hero_text h1{
+        font-size: 3em;
+    }
+
+    .homepage_stats{
+        flex-direction: column;
+    }
+
+    .column_pair{
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: none;
+        display: flex;
+        justify-content: center;
+    }
+
+    .flex_column{
+        flex-direction: column;
+    }
+
+    #scroll_button{
+        top: 0px;
+        left: 0px;
+    }
+
+    .hero_section{
+        height: 60vh;
+    }
+
 }
 
 .alert{
