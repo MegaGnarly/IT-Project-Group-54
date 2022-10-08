@@ -180,6 +180,7 @@ const registerUser = async (req, res) => {
     
 };
 
+// user homepage------------------------------------------------
 const user = async (req,res) => {
     if (!req.isAuthenticated()){
         return res.redirect('login')
@@ -296,6 +297,7 @@ const user = async (req,res) => {
     }).sort({size: -1}).limit(1);
 }
 
+// suggestion page---------------------------------------------------------------
 const recommend = async (req,res) => {
     var user = true;
     var regex1 = { $regex: req.body.name.trim(), $options: "i" };
@@ -317,7 +319,8 @@ const recommend = async (req,res) => {
             maxLoc = locList[key];
         }
     }
-    var result = {result:{loc: maxLoc, spe: req.body.name, num:maxLocNum}};
+    var searchLoc = maxLoc.replaceAll(" ", "%20");
+    var result = {result:{loc: maxLoc, searchLoc:searchLoc, spe: req.body.name, num:maxLocNum}};
     return res.render('recommend', {layout: "mainLoggedIn.hbs",recommend: result, user});
 }
 
