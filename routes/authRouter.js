@@ -81,13 +81,13 @@ authRouter.post('/', upload.single('image'), (req, res) => {
         angler: sessionStorage.getItem('username'),
         time: Date.now(),
         displayDate: date,
-        species: req.body.name,
+        species: req.body.name.trim(),
         size: req.body.size,
         weight: req.body.weight,
         weather: req.body.weather,
         period: req.body.period,
-        location: req.body.location,
-        mates: req.body.mates,
+        location: req.body.location.trim(),
+        mates: req.body.mates.trim(),
         img: {
             data: fs.readFileSync('./uploads/' + req.file.filename),
             imgType: req.file.mimetype

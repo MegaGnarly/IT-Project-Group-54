@@ -236,7 +236,6 @@ const user = async (req,res) => {
     var maxLoc = null;
     var maxLocNum = 0;
     for (key in locList){
-        console.log(maxLoc+" with "+maxLocNum);
         var regex = { $regex: locList[key], $options: "i" };
         var n = await fish.find({angler: sessionStorage.getItem('username'), location: regex}).count();
         if (n>=maxLocNum){
@@ -248,7 +247,6 @@ const user = async (req,res) => {
     var maxSpe = null;
     var maxSpeNum = 0;
     for (key in speList){
-        console.log(maxSpe+" with "+maxSpeNum);
         var regex = { $regex: speList[key], $options: "i" };
         var n = await fish.find({angler: sessionStorage.getItem('username'), species: regex}).count();
         if (n>=maxSpeNum){
@@ -300,7 +298,7 @@ const user = async (req,res) => {
 
 const recommend = async (req,res) => {
     var user = true;
-    var regex1 = { $regex: req.body.name, $options: "xi" };
+    var regex1 = { $regex: req.body.name.trim(), $options: "i" };
     var rec = await fish.find({species: regex1});
     var locList = new Array();
     for (key in rec) { 
@@ -312,7 +310,7 @@ const recommend = async (req,res) => {
     var maxLoc = null;
     var maxLocNum = 0;
     for (key in locList){
-        var regex2 = { $regex: locList[key], $options: "xi" };
+        var regex2 = { $regex: locList[key], $options: "i" };
         var n = await fish.find({species: regex1, location: regex2}).count();
         if (n>=maxLocNum){
             maxLocNum = n;
