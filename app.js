@@ -34,7 +34,7 @@ app.use(
             sameSite: 'strict',
             httpOnly: true,
             secure: app.get('env') === 'production',
-            maxAge: 600000
+            maxAge: 3600000
         },
     })
 )
