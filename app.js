@@ -2,11 +2,9 @@ const PORT = 8080;
 const express = require('express')
 const bodyParser = require('body-parser')
 const exphbs = require('express-handlebars');
-const sessionStorage = require('sessionstorage')
 const session = require('express-session')
 const flash = require('express-flash')
 const passport = require('./passport.js')
-const bcrypt = require('bcryptjs')
 
 const app = express();
 
@@ -49,7 +47,6 @@ app.use(passport.authenticate('session'))
 const authRouter = require('./routes/authRouter');
 app.use(authRouter)
 
-
 // Define where static assets live
 app.use(express.static('public'))
 
@@ -60,9 +57,7 @@ const appRouter = require('./routes/appRouter')
 
 app.use('/', appRouter)
 
-app.get('*', (req, res) => {
-    res.render('homepage.hbs')
-})
+app.get('*', appRouter)
 
 app.listen(process.env.PORT || PORT, () => {
     console.log('\n\Fish Crate is running!')

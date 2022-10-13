@@ -21,12 +21,6 @@ const isAuthenticated = (req, res, next) => {
 
 // Login page (with failure message displayed upon login failure)
 authRouter.get('/login', (req, res) => {
-    /* if (isAuthenticated()){
-        res.redirect('/user')
-    }
-    else {
-        res.render('login.hbs', { flash: req.flash('error'), title: 'Login', layout: 'main' })
-    } */
     res.render('login.hbs', { flash: req.flash('error'), title: 'Login', layout: 'main' })
 })
 
