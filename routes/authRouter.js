@@ -18,17 +18,6 @@ const isAuthenticated = (req, res, next) => {
     return next()
 }
 
-// Main page which requires login to access
-// Note use of authentication middleware here
-// authRouter.get('/user', isAuthenticated, (req, res) => {
-//     console.log("Loaded user homepage (authRouter.js)")
-//     console.log(req.user.username)
-//     appController.user
-//     res.render('user_homepage.hbs', {layout: 'mainLoggedIn', user: sessionStorage.getItem('username')})
-
-//     // res.render('patient_dashboard', { user: req.user.toJSON() })
-// })
-
 
 // Login page (with failure message displayed upon login failure)
 authRouter.get('/login', (req, res) => {
