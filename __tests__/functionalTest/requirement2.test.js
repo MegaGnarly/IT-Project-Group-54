@@ -10,7 +10,7 @@ const {openBrowser, goto, write, click, closeBrowser, accept} = require('taiko')
         await click("password");
         await write("password");
         await click("Sign in");
-        await click("fish");
+        await click("Your Fish");
         await click("Details");
         await click("Copy");
         confirm('share it to Facebook?', async () => await accept())

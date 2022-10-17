@@ -1,6 +1,10 @@
+// imported packages-----------------------------------------------------
 const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
 
+/**
+ * this file is the model of user data saved in the database
+ */
 var userSchema = new mongoose.Schema({
     first_name: {type: String, required:true},
     last_name: {type: String, required: true},

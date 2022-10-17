@@ -1,3 +1,19 @@
+/**Authors:              StudentId:
+ *        :Yu HE (Jack)           :1058035
+ *        :David Liu              :1182979
+ *        :Victor Lok             :1172126
+ *        :Bernhard Danielsen     :1106804
+ * 
+ * This program is wrote for the FishCrate app, which is an app made for 
+ * anglers to record and to share their catches.
+ */
+
+/**
+ * this file is the central app of Fish Crate. It recieves front end
+ * requests and redirect these requests to related Router.
+ */
+
+// imported packages-----------------------------------------------------
 const PORT = 8080;
 const express = require('express')
 const bodyParser = require('body-parser')

@@ -1,3 +1,6 @@
+/**
+ * this file is used to process requests when app is not logged in
+ */
 //requirements-------------------------------------------------------
 const express = require('express')
 const appRouter = express.Router()

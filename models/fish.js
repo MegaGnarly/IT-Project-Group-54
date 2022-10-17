@@ -1,7 +1,9 @@
-//model for the fish----------------------------------------------
+// imported packages----------------------------------------------
 const mongoose = require('mongoose')
 
-//I added a angler attribute cuz I think we might need to sort with respect to anglers too
+/**
+ * this file is model of fish data stored in our database
+ */
 var fishSchema = new mongoose.Schema({
     angler: String,
     time: Date,

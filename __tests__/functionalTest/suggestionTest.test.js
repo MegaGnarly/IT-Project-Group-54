@@ -1,4 +1,4 @@
-const {openBrowser, goto, write, click, closeBrowser, accept} = require('taiko');
+const {openBrowser, goto, write, click, closeBrowser} = require('taiko');
 
 (async ()=>{
     try{
@@ -10,8 +10,9 @@ const {openBrowser, goto, write, click, closeBrowser, accept} = require('taiko')
         await click("password");
         await write("password");
         await click("Sign in");
-        await click("Your Fish");
-        await dropDown(below("Sort with:")).select("Time");
+        await click("sugestion");
+        await click("Search species:");
+        await write("jelly fish");
         await click("Search");
     }catch(error){
         console.log(error)
@@ -20,6 +21,4 @@ const {openBrowser, goto, write, click, closeBrowser, accept} = require('taiko')
     }
 })();
 
-//user stories 5
-//As an Angler, I want to be able to see regular reports 
-//in order to reflect upon my fishing memories and trends
+// testing if the suggestion function works when searching target not exists

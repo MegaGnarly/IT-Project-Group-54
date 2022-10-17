@@ -1,3 +1,7 @@
+/**
+ * this file is the core functionalities of the app,
+ * it mainly deals with database searching and various types of sorting.
+ */
 //requires fish and user model----------------------------------
 const sessionStorage = require('sessionstorage')
 const authRouter = require('../routes/authRouter')
@@ -5,6 +9,10 @@ var fish = require('../models/fish');
 var User = require('../models/user');
 
 // viewing fish page--------------------------------------------------------------
+/**
+ * this function finds all caught by a specific user
+ * ny filtering our fish database with the username
+ */
 const viewFish = async (req,res) => {
     if (!req.isAuthenticated()) {
         return res.redirect('/login')
@@ -25,6 +33,11 @@ const viewFish = async (req,res) => {
 }
 
 // filter function in viewFish page-------------------------------------------------------
+/**
+ * this function provides both filtering and sorting in viewFish page
+ * it gets both sorting attribute and filtering attributes from that
+ * page, and apply them to our database
+ */
 const fishFilter = async (req,res) => {
 
     var sort = null;
@@ -77,6 +90,10 @@ const fishFilter = async (req,res) => {
 };
 
 // render the details of one fish-------------------------------------------
+/**
+ * this function finds a specific fish record by accepting a given
+ * fish id. to avoid conflict, we limit the result of find() to 1
+ */
 const fishDetails = async (req,res) => {
 
     fish.find({_id: req.params._id}, (err, fishes) => {
@@ -96,6 +113,11 @@ const fishDetails = async (req,res) => {
 }
 
 // delete an unwanted record----------------------------------------------------
+/**
+ * this function simplily applys the deletOne() to a
+ * given fish record according to it's id. remove that
+ * record and redirect the user back to viewFish page
+ */
 const deleteFish = async (req,res) => {
     var info = {_id: req.params._id};
     fish.deleteOne(info, function(err, obj) {if (err) throw err;});
@@ -103,6 +125,10 @@ const deleteFish = async (req,res) => {
 }
 
 // update details of one fish-------------------------------------------------
+/**
+ * this function updates recorded data of a fish record in database,
+ * by accepting updated data and id of that fish
+ */
 const updateFish = async (req,res) => {
 
     var info = {_id: req.params._id};
@@ -121,6 +147,11 @@ const updateFish = async (req,res) => {
 }
 
 // create a simpler string to store date----------------------------------------
+/**
+ * we originally store date details with accurate to seconds,
+ * but it's hard to read, this function turns it to a more 
+ * readable string to store and to be shown
+ */
 const getDateString = function (date = new Date) {
     var day = date.getDate();
     var month = date.getMonth() + 1;
@@ -136,6 +167,10 @@ const getDateString = function (date = new Date) {
 };
 
 // render the details of one fish in homePage-------------------------------------------
+/**
+ * this function filter our entire fish database and finds out
+ * the biggest fish by sorting with size and limit the result to 1
+ */
 const starFish = async (req,res) => {
 
     today = getDateString();
@@ -156,6 +191,10 @@ const starFish = async (req,res) => {
 }
 
 // register user --------------------------------------
+/**
+ * this function allows our user to create a new account and save it
+ * to our user database
+ */
 const registerUser = async (req, res) => {
     if ((req.body.password != req.body.rpassword) || req.body.password === "") { 
         return res.render('sign_up.hbs', {error: true, errorMessage: "Please verify that your passwords match and try again.", layout: 'main'})
@@ -181,6 +220,12 @@ const registerUser = async (req, res) => {
 };
 
 // user homepage------------------------------------------------
+/**
+ * this function is for the angler career block on the userhomepage
+ * it finds the biggest fish in the user's fish record and counts
+ * various types of fish attributes and pack them together in an
+ * object, then send it to frontend
+ */
 const user = async (req,res) => {
     if (!req.isAuthenticated()){
         return res.redirect('login')
@@ -298,6 +343,11 @@ const user = async (req,res) => {
 }
 
 // suggestion page---------------------------------------------------------------
+/**
+ * this function filters a given species fo fish in our database
+ * and count the number of them with same location. pass the location
+ * to frontend to give advice
+ */
 const recommend = async (req,res) => {
     var user = true;
     var regex1 = { $regex: req.body.name.trim(), $options: "i" };
@@ -319,8 +369,8 @@ const recommend = async (req,res) => {
             maxLoc = locList[key];
         }
     }
-    var searchLoc = maxLoc.replaceAll(" ", "%20");
-    var result = {result:{loc: maxLoc, searchLoc:searchLoc, spe: req.body.name, num:maxLocNum}};
+
+    var result = {result:{loc: maxLoc, spe: req.body.name, num:maxLocNum}};
     return res.render('recommend', {layout: "mainLoggedIn.hbs",recommend: result, user});
 }
 

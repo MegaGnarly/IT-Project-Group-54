@@ -14,7 +14,6 @@ const {openBrowser, goto, write, click, closeBrowser} = require('taiko');
         await click("Search species:");
         await write("shark");
         await click("Search");
-        await click("Let's Go!");
     }catch(error){
         console.log(error)
     }finally{

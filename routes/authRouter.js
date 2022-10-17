@@ -1,3 +1,7 @@
+/**
+ * this file is wrote to process requests when app is logged in
+ */
+// imported packages-----------------------------------------------------
 const passport = require('passport')
 const express = require('express')
 const authRouter = express.Router()
